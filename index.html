@@ -10,7 +10,6 @@
            1. SISTEMA DE VARIABLES GLOBALES (THEMING ENGINE)
            ========================================================================== */
         :root {
-            /* Paleta Modo Claro (Por Defecto) */
             --bg-main: #fcf9fa;         
             --card-white: #ffffff;      
             --card-blush: #fff5f8;      
@@ -25,14 +24,12 @@
             --scratch-input: #4d1531;
             --scratch-text: #fff0f3;
             
-            /* Tipografía y Geometría */
             --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --radius-premium: 16px;
             --radius-tile: 10px;
             --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Paleta Modo Noche (Activación por Clase) */
         body.dark-mode {
             --bg-main: #120b0e;
             --card-white: #1a1014;
@@ -68,7 +65,7 @@
         .container { max-width: 1240px; margin: 0 auto; flex: 1; width: 100%; }
 
         /* ==========================================================================
-           3. CABECERA (HEADER & DASHBOARD CONTROLS)
+           3. CABECERA Y CONTROLES
            ========================================================================== */
         header {
             position: relative;
@@ -113,11 +110,19 @@
         @media (min-width: 768px) { .controls { flex-direction: row; } }
 
         .search-input {
-            width: 100%; max-width: 420px; background-color: var(--card-white); border: 1px solid var(--border-soft); 
+            width: 100%; max-width: 320px; background-color: var(--card-white); border: 1px solid var(--border-soft); 
             border-radius: var(--radius-tile); padding: 14px 18px; font-size: 0.95rem; color: var(--text-body);
             transition: var(--transition-smooth); box-sizing: border-box;
         }
         .search-input:focus { outline: none; border-color: var(--accent-pink); box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.15); }
+
+        /* 🟢 DISEÑO DEL ABRE-CHATS DE WHATSAPP */
+        .wa-input {
+            width: 100%; max-width: 280px; background-color: var(--card-white); border: 1px solid var(--border-soft); 
+            border-radius: var(--radius-tile); padding: 14px 18px; font-size: 0.95rem; color: var(--text-body);
+            transition: var(--transition-smooth); box-sizing: border-box;
+        }
+        .wa-input:focus { outline: none; border-color: #25D366; box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15); }
 
         .sheets-btn {
             display: inline-flex; align-items: center; gap: 8px; background-color: var(--card-blush);
@@ -127,7 +132,6 @@
         }
         .sheets-btn:hover { background-color: var(--accent-pink); color: #ffffff; border-color: var(--accent-pink); }
 
-        /* Módulo de Quick Chips Dinámicos */
         .chips-container { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; width: 100%; }
         .chip {
             background: var(--card-white); border: 1px solid var(--border-soft); padding: 8px 16px;
@@ -142,7 +146,7 @@
         }
 
         /* ==========================================================================
-           4. CUADRÍCULA DEL DASHBOARD (SMART MASONRY / ENCAJE PERFECTO)
+           4. CUADRÍCULA DEL DASHBOARD (SMART MASONRY)
            ========================================================================== */
         #dashboard { 
             column-width: 320px; 
@@ -152,14 +156,12 @@
         }
 
         .card {
-            break-inside: avoid; /* Magia: Evita que la tarjeta se parta */
-            margin-bottom: 18px; /* Separación vertical */
-            
+            break-inside: avoid; 
+            margin-bottom: 18px; 
             border: 1px solid var(--border-soft); border-radius: var(--radius-premium); padding: 22px; 
             transition: var(--transition-smooth); display: flex; flex-direction: column;
             box-sizing: border-box; box-shadow: 0 4px 12px rgba(61, 12, 36, 0.01);
         }
-        /* Lógica del Ajedrez Intercalado */
         .card:nth-child(odd) { background-color: var(--card-white); }
         .card:nth-child(even) { background-color: var(--card-blush); }
         .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(244, 143, 177, 0.08); }
@@ -171,9 +173,6 @@
 
         .grid-buttons { display: flex; flex-direction: column; gap: 10px; }
 
-        /* ==========================================================================
-           5. COMPONENTES INTERACTIVOS (COPIADO Y HERRAMIENTAS)
-           ========================================================================== */
         .copy-item {
             display: flex; flex-direction: column; background-color: var(--card-white); 
             border: 1px solid var(--border-soft); border-radius: var(--radius-tile); padding: 12px 14px; 
@@ -194,7 +193,6 @@
         .copy-item.success { background-color: var(--success-bg); border-color: var(--success-text); }
         .copy-item.success .item-preview, .copy-item.success .item-tag { color: var(--success-text); }
 
-        /* Bloc de Notas Premium */
         #static-scratchpad { background-color: var(--scratch-bg) !important; border-color: rgba(61, 12, 36, 0.1); }
         #static-scratchpad .card-title { color: var(--scratch-text) !important; border-bottom: 2px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
         #char-counter { font-size: 0.65rem; color: var(--accent-pink); font-weight: 400; }
@@ -236,7 +234,10 @@
             </div>
 
             <div class="controls">
-                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Filtrar por nombre, RUC, palabra clave..." oninput="filterDashboard()">
+                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Filtrar tarjetas o atajos..." oninput="filterDashboard()">
+                
+                <input type="tel" id="waInput" class="wa-input" placeholder="💬 Chat directo (Ej: 987654321) + Enter" title="Escribe el número y presiona Enter para abrir WhatsApp">
+                
                 <a href="https://docs.google.com/spreadsheets/d/1pLfFr3mM8BI6wtjwGgwp4fMjl3bCtIjZP2iTd3wZ9Do/edit?usp=sharing" target="_blank" class="sheets-btn">
                     📊 Editar Google Sheets
                 </a>
@@ -288,7 +289,6 @@
 
         document.getElementById('stat-copied').innerText = copyCounter;
 
-        // Inicialización de Widgets Fijos
         const initStaticCopy = (id, text) => {
             const el = document.getElementById(id);
             if(el) {
@@ -300,7 +300,30 @@
         initStaticCopy('nota2', "Eres la administradora más increíble del mundo 🌸");
 
         /**
-         * MÓDULO MODO OSCURO (PERSISTENTE EN LOCALSTORAGE)
+         * 🟢 MÓDULO LÓGICO: ABRE-CHATS CORPORATIVO DIRECTO
+         */
+        const waInput = document.getElementById('waInput');
+        waInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                // Eliminar todo lo que no sea número del input
+                let number = this.value.trim().replace(/\D/g, ''); 
+                if (number === '') return;
+                
+                // UX Inteligente: Si el número tiene 9 dígitos exactos y empieza con 9, asume formato Perú y agrega código +51
+                if (number.length === 9 && number.startsWith('9')) {
+                    number = '51' + number;
+                }
+                
+                // Abrir la API de WhatsApp Web en una nueva pestaña
+                window.open(`https://wa.me/${number}`, '_blank');
+                
+                // Limpiar el campo automáticamente para el siguiente cliente
+                this.value = '';
+            }
+        });
+
+        /**
+         * MÓDULO MODO OSCURO
          */
         const themeBtn = document.getElementById('themeBtn');
         if (localStorage.getItem('alito_theme') === 'dark') {
@@ -315,7 +338,7 @@
         });
 
         /**
-         * MÓDULO BLOC DE NOTAS CON HERRAMIENTAS DE TEXTO
+         * MÓDULO BLOC DE NOTAS CON HERRAMIENTAS
          */
         const scratchpad = document.getElementById('scratchpad');
         const charCounter = document.getElementById('char-counter');
@@ -340,7 +363,7 @@
         }
 
         /**
-         * MÓDULO DE SINCRONIZACIÓN CON GOOGLE SHEETS
+         * MÓDULO DE SINCRONIZACIÓN Y RENDERIZADO
          */
         function fetchCloudData() {
             const xhr = new XMLHttpRequest();
@@ -359,9 +382,6 @@
             xhr.send();
         }
 
-        /**
-         * MÓDULO DE CONSTRUCCIÓN DINÁMICA DE LA INTERFAZ
-         */
         function buildChips(data) {
             const chipsBox = document.getElementById('chipsBox');
             chipsBox.innerHTML = '<div class="chip active" onclick="filterByChip(\'todos\', this)">⭐ Todos</div>';
@@ -427,7 +447,7 @@
         }
 
         /**
-         * MÓDULO DE PORTAPAPELES FANTASMA (1-CLICK COPY)
+         * MÓDULO DE PORTAPAPELES FANTASMA
          */
         function copyText(text, element) {
             if (navigator.clipboard && window.isSecureContext) {
@@ -473,7 +493,7 @@
         }
 
         /**
-         * MÓDULO DE FILTRADO Y BÚSQUEDA CRUZADA
+         * MÓDULO DE FILTRADO
          */
         window.filterDashboard = function() {
             document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -500,7 +520,6 @@
             });
         }
 
-        // Auto-Arranque
         window.addEventListener('DOMContentLoaded', fetchCloudData);
     </script>
 </body>
