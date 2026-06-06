@@ -3,108 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Administrador - Workspace Pro</title>
+    <title>🌸 Sitio de la mejor administradora Alito</title>
     <style>
         :root {
-            --bg-main: #f1f5f9;
+            --bg-main: #fffafb; /* Fondo crema rosado muy suave */
             --surface: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --border: #e2e8f0;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --success: #10b981;
-            --radius-lg: 14px;
-            --radius-md: 10px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
-            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --text-primary: #5d4a4a; /* Marrón suave para legibilidad */
+            --text-secondary: #a89090;
+            --border: #fce4ec;
+            --accent: #f8bbd0; /* Rosa pastel clásico */
+            --accent-hover: #f48fb1;
+            --success: #c8e6c9;
+            --radius-lg: 24px;
+            --radius-md: 14px;
+            --shadow-sm: 0 4px 10px rgba(248, 187, 208, 0.2);
+            --shadow-md: 0 12px 30px -5px rgba(248, 187, 208, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-main);
             color: var(--text-primary);
             margin: 0;
-            padding: 24px;
-        }
-
-        .container { max-width: 1400px; margin: 0 auto; }
-
-        header {
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-bottom: 32px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; flex: 1; width: 100%; }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand h1 { 
+            font-size: 2rem; 
+            font-weight: 800; 
+            margin: 0; 
+            color: #880e4f;
+            letter-spacing: -0.02em;
+        }
+        .brand p { font-size: 0.95rem; color: var(--text-secondary); margin: 10px 0 0 0; font-style: italic; }
+
+        .controls { 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            margin-top: 25px; 
+            gap: 15px; 
+            width: 100%; 
         }
 
         @media (min-width: 768px) {
-            header { flex-direction: row; justify-content: space-between; align-items: center; }
+            .controls {
+                flex-direction: row;
+            }
         }
-
-        .brand h1 { font-size: 1.6rem; font-weight: 700; margin: 0; color: #1e293b; }
-        .brand p { font-size: 0.875rem; color: var(--text-secondary); margin: 4px 0 0 0; }
-
-        .controls { display: flex; gap: 12px; align-items: center; width: 100%; }
-        @media (min-width: 768px) { .controls { width: auto; } }
 
         .search-input {
-            width: 100%; min-width: 280px; background-color: var(--surface);
-            border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 12px 16px; font-size: 0.9rem; box-shadow: var(--shadow-sm);
-            box-sizing: border-box; transition: var(--transition);
+            width: 100%; 
+            max-width: 400px; 
+            background-color: var(--surface);
+            border: 1px solid var(--border); 
+            border-radius: var(--radius-md);
+            padding: 14px 20px; 
+            font-size: 0.95rem; 
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            box-sizing: border-box;
         }
-        .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .search-input:focus { 
+            outline: none; 
+            border-color: var(--accent); 
+            box-shadow: 0 0 0 4px rgba(248, 187, 208, 0.25); 
+        }
+
+        /* Botón Estilo Girly para Google Sheets */
+        .sheets-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #fce4ec;
+            color: #ad1457;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid #f8bbd0;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .sheets-btn:hover {
+            background-color: #f8bbd0;
+            color: #880e4f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(248, 187, 208, 0.4);
+        }
 
         .status-badge {
-            display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
-            font-weight: 600; padding: 6px 12px; border-radius: 20px; background: #e2e8f0; color: #475569;
-            transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
+            font-weight: 700; padding: 8px 16px; border-radius: 30px; 
+            background: #fce4ec; color: #ad1457; text-transform: uppercase;
         }
-        .status-badge.online { background: #d1fae5; color: #065f46; }
-        .status-badge.error { background: #fee2e2; color: #991b1b; }
 
-        #dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+        #dashboard { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
+            gap: 30px; 
+            padding-bottom: 50px;
+        }
 
         .card {
-            background-color: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
-            padding: 24px; display: flex; flex-direction: column; height: fit-content;
+            background-color: var(--surface); 
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg); 
+            box-shadow: var(--shadow-sm);
+            padding: 25px; 
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        
         .card-title {
-            font-size: 1.15rem; font-weight: 700; margin: 0 0 16px 0;
-            color: #1e293b; display: flex; justify-content: space-between; align-items: center;
+            font-size: 1.25rem; font-weight: 700; margin: 0 0 20px 0;
+            color: #ad1457; display: flex; justify-content: space-between; align-items: center;
         }
-        .card-counter { font-size: 0.75rem; background-color: #f1f5f9; color: var(--text-secondary); padding: 4px 10px; border-radius: 20px; font-weight: 600; }
 
-        .grid-buttons { display: flex; flex-direction: column; gap: 10px; max-height: 450px; overflow-y: auto; padding-right: 4px; }
-        .grid-buttons::-webkit-scrollbar { width: 5px; }
-        .grid-buttons::-webkit-scrollbar-track { background: transparent; }
-        .grid-buttons::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .grid-buttons { display: flex; flex-direction: column; gap: 12px; }
 
         .copy-item {
             display: flex; align-items: center; justify-content: space-between;
-            background-color: #f8fafc; border: 1px solid var(--border);
-            border-radius: var(--radius-md); padding: 12px 14px; cursor: pointer; transition: var(--transition);
+            background-color: #fff9fa; border: 1px solid #fff0f3;
+            border-radius: var(--radius-md); padding: 15px; cursor: pointer; transition: var(--transition);
         }
-        .copy-item:hover { background-color: #f0fdf4; border-color: #bbf7d0; transform: translateX(2px); }
-        .item-info { display: flex; flex-direction: column; overflow: hidden; padding-right: 12px; width: 100%; }
-        .item-label { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .item-preview { font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 3px; }
-        .copy-status { font-size: 0.75rem; font-weight: 700; color: var(--accent); opacity: 0.8; white-space: nowrap; }
+        .copy-item:hover { 
+            background-color: #fce4ec; 
+            border-color: var(--accent); 
+        }
+        
+        .item-info { display: flex; flex-direction: column; overflow: hidden; width: 100%; }
+        .item-label { font-size: 0.95rem; font-weight: 600; color: #4a148c; }
+        .item-preview { font-size: 0.8rem; color: #880e4f; margin-top: 4px; opacity: 0.7; }
+        
+        .copy-status { font-size: 0.75rem; font-weight: 800; color: #ec407a; opacity: 0.6; }
 
-        .copy-item.success { background-color: #ecfdf5; border-color: #a7f3d0; }
-        .copy-item.success .item-label { color: #065f46; }
-        .copy-item.success .copy-status { color: var(--success); opacity: 1; }
+        .copy-item.success { background-color: #e8f5e9; border-color: #81c784; }
+        .copy-item.success .item-label { color: #2e7d32; }
 
-        .state-container { grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-secondary); background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); }
-        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid var(--accent); border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto 12px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* Footer Estilo Roblecito */
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            color: #ad1457;
+            opacity: 0.45;
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+
         .hidden { display: none !important; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid var(--accent); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -112,22 +183,25 @@
     <div class="container">
         <header>
             <div class="brand">
-                <h1>📋 Panel de Administración</h1>
-                <p>Sincronización automática en tiempo real desde Google Sheets</p>
+                <h1>🌸 Sitio de la mejor administradora Alito</h1>
+                <p>Tu rincón de trabajo organizado con todo el amor del mundo</p>
             </div>
+            <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando...</div>
             <div class="controls">
-                <div id="networkStatus" class="status-badge">⏳ Conectando con la nube...</div>
-                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Buscar por palabra o categoría..." oninput="filterDashboard()">
+                <input type="text" id="searchBar" class="search-input" placeholder="🌸 ¿Qué necesitas copiar hoy, Alito?" oninput="filterDashboard()">
+                <a href="https://docs.google.com/spreadsheets/d/1pLfFr3mM8BI6wtjwGgwp4fMjl3bCtIjZP2iTd3wZ9Do/edit?usp=sharing" target="_blank" class="sheets-btn">
+                    📊 Editar Base de Datos
+                </a>
             </div>
         </header>
 
         <main id="dashboard">
-            <div class="state-container">
-                <div class="spinner"></div>
-                <p>Sincronizando base de datos en tiempo real...</p>
-            </div>
         </main>
     </div>
+
+    <footer>
+        Elaborado con amor por su Roblecito ❤️
+    </footer>
 
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
@@ -136,61 +210,40 @@
 
         function fetchCloudData() {
             const dashboard = document.getElementById('dashboard');
-            const statusBadge = document.getElementById('networkStatus');
+            dashboard.innerHTML = '<div style="grid-column: 1/-1; text-align:center;"><div class="spinner"></div><p style="margin-top:15px; color:#ad1457;">Trayendo tus datos, rabanito...</p></div>';
 
-            // USAMOS XMLHttpRequest PARA FORZAR AL NAVEGADOR A SEGUIR LAS REDIRECCIONES DE GOOGLE SIN INPUTAR ERRORES DE CORS
             const xhr = new XMLHttpRequest();
             xhr.open("GET", SCRIPT_URL, true);
-            
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     try {
                         const rawData = JSON.parse(xhr.responseText);
                         masterData = groupDataByCategory(rawData);
                         renderDashboard(masterData);
-                        
-                        statusBadge.className = "status-badge online";
-                        statusBadge.innerHTML = "🟢 Conectado a la Nube";
-                    } catch (e) {
-                        showErrorUI();
-                    }
-                } else {
-                    showErrorUI();
-                }
+                        document.getElementById('networkStatus').innerHTML = "✨ En Línea para Alito";
+                        document.getElementById('networkStatus').className = "status-badge";
+                        document.getElementById('networkStatus').style.background = "#e8f5e9";
+                        document.getElementById('networkStatus').style.color = "#2e7d32";
+                    } catch (e) { showErrorUI(); }
+                } else { showErrorUI(); }
             };
-
-            xhr.onerror = function () {
-                showErrorUI();
-            };
-
+            xhr.onerror = function () { showErrorUI(); };
             xhr.send();
         }
 
-        function showErrorUI() {
-            const dashboard = document.getElementById('dashboard');
-            const statusBadge = document.getElementById('networkStatus');
-            statusBadge.className = "status-badge error";
-            statusBadge.innerHTML = "🔴 Error de conexión";
-            
-            dashboard.innerHTML = `
-                <div class="state-container" style="border-color: #ef4444;">
-                    <h3 style="color: #991b1b; margin-top:0;">No se pudieron sincronizar los datos</h3>
-                    <p>Asegúrate de haber guardado la última versión del código en Google Sheets usando una "Nueva Versión" desde el menú de implementar.</p>
-                    <button onclick="fetchCloudData()" style="background: var(--accent); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 500; margin-top: 10px;">🔄 Reintentar Sincronización</button>
-                </div>`;
-        }
-
         function groupDataByCategory(arrayData) {
-            const tree = {};
+            const tree = {
+                "Notas de Amor ✨": [
+                    { label: "¡Ánimo!", targetText: "Lo haces bien, mi rabanito ❤️" },
+                    { label: "Te amo", targetText: "Eres la administradora más increíble del mundo 🌸" }
+                ]
+            };
+            
             arrayData.forEach(row => {
                 const cat = row.categoria;
                 if (!cat) return;
-                
                 if (!tree[cat]) tree[cat] = [];
-                tree[cat].push({
-                    label: row.etiqueta,
-                    targetText: row.texto
-                });
+                tree[cat].push({ label: row.etiqueta, targetText: row.texto });
             });
             return tree;
         }
@@ -199,92 +252,46 @@
             const dashboard = document.getElementById('dashboard');
             dashboard.innerHTML = '';
 
-            const categories = Object.keys(data);
-            if (categories.length === 0) {
-                dashboard.innerHTML = `<div class="state-container"><p>La hoja de cálculo está vacía o no tiene datos válidos.</p></div>`;
-                return;
-            }
-
-            categories.forEach(catName => {
-                const items = data[catName];
+            Object.keys(data).forEach(catName => {
                 const card = document.createElement('section');
                 card.className = 'card';
                 card.setAttribute('data-category', catName.toLowerCase());
-
-                card.innerHTML = `
-                    <h2 class="card-title">
-                        <span>${catName}</span>
-                        <span class="card-counter">${items.length} items</span>
-                    </h2>
-                    <div class="grid-buttons"></div>
-                `;
+                card.innerHTML = `<h2 class="card-title"><span>${catName}</span></h2><div class="grid-buttons"></div>`;
 
                 const btnGrid = card.querySelector('.grid-buttons');
-
-                items.forEach(item => {
+                data[catName].forEach(item => {
                     const block = document.createElement('div');
                     block.className = 'copy-item';
-                    
-                    block.innerHTML = `
-                        <div class="item-info">
-                            <span class="item-label">${item.label}</span>
-                            <span class="item-preview">${item.targetText}</span>
-                        </div>
-                        <span class="copy-status">Copiar</span>
-                    `;
-
+                    block.innerHTML = `<div class="item-info"><span class="item-label">${item.label}</span><span class="item-preview">${item.targetText}</span></div><span class="copy-status">Copiar</span>`;
                     block.addEventListener('click', () => {
                         navigator.clipboard.writeText(item.targetText).then(() => {
-                            triggerSuccessState(block);
-                        }).catch(() => {
-                            const textArea = document.createElement("textarea");
-                            textArea.value = item.targetText;
-                            document.body.appendChild(textArea);
-                            textArea.select();
-                            document.execCommand('copy');
-                            triggerSuccessState(block);
-                            document.body.removeChild(textArea);
+                            const original = block.querySelector('.copy-status').innerText;
+                            block.classList.add('success');
+                            block.querySelector('.copy-status').innerText = '✨ ¡Listo!';
+                            setTimeout(() => {
+                                block.classList.remove('success');
+                                block.querySelector('.copy-status').innerText = original;
+                            }, 1000);
                         });
                     });
-
                     btnGrid.appendChild(block);
                 });
                 dashboard.appendChild(card);
             });
         }
 
-        function triggerSuccessState(element) {
-            element.classList.add('success');
-            const statusText = element.querySelector('.copy-status');
-            statusText.innerText = '¡Copiado!';
-            setTimeout(() => {
-                element.classList.remove('success');
-                statusText.innerText = 'Copiar';
-            }, 1000);
-        }
-
         function filterDashboard() {
-            const query = document.getElementById('searchBar').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.card');
-
-            cards.forEach(card => {
-                const catName = card.getAttribute('data-category');
-                const items = card.querySelectorAll('.copy-item');
-                let hasVisibleItems = false;
-
-                items.forEach(item => {
-                    const label = item.querySelector('.item-label').innerText.toLowerCase();
-                    const preview = item.querySelector('.item-preview').innerText.toLowerCase();
-                    
-                    if (label.includes(query) || preview.includes(query) || catName.includes(query)) {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            document.querySelectorAll('.card').forEach(card => {
+                let hasMatch = false;
+                card.querySelectorAll('.copy-item').forEach(item => {
+                    const text = item.innerText.toLowerCase();
+                    if (text.includes(query)) {
                         item.classList.remove('hidden');
-                        hasVisibleItems = true;
-                    } else {
-                        item.classList.add('hidden');
-                    }
+                        hasMatch = true;
+                    } else item.classList.add('hidden');
                 });
-
-                if (hasVisibleItems) card.classList.remove('hidden');
+                if (hasMatch || card.getAttribute('data-category').includes(query)) card.classList.remove('hidden');
                 else card.classList.add('hidden');
             });
         }
