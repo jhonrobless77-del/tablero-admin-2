@@ -546,6 +546,64 @@
             });
         }
 
+      /**
+         * 💖 EASTER EGG SECRETO: EL PROTOCOLO "ROBLECITO" (CON MÚSICA AUTOMÁTICA)
+         */
+        let secretClicks = 0;
+        const footerElement = document.querySelector('footer');
+        footerElement.style.cursor = 'pointer';
+        
+        footerElement.addEventListener('click', function() {
+            secretClicks++;
+            
+            // Si hace 7 clics seguidos, se activa la magia
+            if(secretClicks === 7) {
+                activarLluviaDeAmor();
+                
+                // Espera un ratito para que vea los corazones, luego manda el mensaje y la música
+                setTimeout(() => {
+                    alert("💻 ALERTA DE SISTEMA:\n\n¡Felicidades, encontraste el secreto de tu Roblecito!\n\nSolo quería recordarte en medio de tu trabajo que eres la administradora más increíble, brillante y hermosa del mundo. Vamos a romperla en todo lo que nos propongamos.\n\nTe amo inmensamente, mi rabanito. ❤️✨");
+                    
+                    // 🔥 MAGIA PURA: Abre YouTube con Roberto Carlos automáticamente en una pestaña nueva
+                    window.open('https://www.youtube.com/watch?v=jvJZj-5ef-Q&list=RDjvJZj-5ef-Q&start_radio=1', '_blank');
+                    
+                }, 800);
+                secretClicks = 0; // Reinicia el contador
+            }
+            
+            // Si deja de hacer clic por 2 segundos, el contador se reinicia
+            clearTimeout(this.clickTimer);
+            this.clickTimer = setTimeout(() => { secretClicks = 0; }, 2000);
+        });
+
+        function activarLluviaDeAmor() {
+            const emojis = ['❤️', '🌸', '✨', '💻', '💖', '🎵']; // ¡Con notitas musicales!
+            for(let i = 0; i < 40; i++) {
+                let particle = document.createElement('div');
+                particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.position = 'fixed';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '-5vh';
+                particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                particle.style.zIndex = '9999';
+                particle.style.pointerEvents = 'none';
+                particle.style.transition = 'top 3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 3s ease-in';
+                document.body.appendChild(particle);
+                
+                // Efecto de caída por gravedad
+                setTimeout(() => {
+                    particle.style.top = '105vh';
+                    particle.style.opacity = '0';
+                }, 50);
+                
+                // Se autodestruyen para mantener la memoria de la laptop limpia
+                setTimeout(() => { particle.remove(); }, 3000);
+            }
+        }
+
+        // ==========================================
+        // AUTO-ARRANQUE DE LA PÁGINA
+        // ==========================================
         window.addEventListener('DOMContentLoaded', fetchCloudData);
     </script>
 </body>
