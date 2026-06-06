@@ -6,6 +6,7 @@
     <title>🌸 Sitio de la mejor administradora Alito</title>
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
+        /* SITEMA DE VARIABLES HÍBRIDO (SOPORTA CLARO Y OSCURO PREMIUM) */
         :root {
             --bg-main: #fbf8f9;         
             --card-white: #ffffff;      
@@ -17,11 +18,31 @@
             --accent-pink: #f48fb1;     
             --success-bg: #e8f5e9;      
             --success-text: #1b5e20;
+            --scratch-bg: #3d0c24;
+            --scratch-input: #4d1531;
+            --scratch-text: #fff0f3;
             
             --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --radius-premium: 16px;
             --radius-tile: 10px;
-            --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* PALETA MODO NOCHE INTEGRADA POR INGENIERÍA DE ENFOQUE */
+        body.dark-mode {
+            --bg-main: #140d10;
+            --card-white: #1f1519;
+            --card-blush: #261a1f;
+            --border-soft: #2d1f25;
+            --text-title: #ffebf2;
+            --text-body: #e5d1d9;
+            --text-tag: #b29da6;
+            --accent-pink: #f48fb1;
+            --success-bg: #122617;
+            --success-text: #a1e3a6;
+            --scratch-bg: #1f1519;
+            --scratch-input: #2d1f25;
+            --scratch-text: #ffffff;
         }
 
         body {
@@ -34,19 +55,41 @@
             flex-direction: column;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container { max-width: 1200px; margin: 0 auto; flex: 1; width: 100%; }
 
         header {
+            position: relative;
             text-align: center;
             margin-bottom: 25px;
             padding: 30px 20px;
-            background: #ffffff;
+            background: var(--card-white);
             border-radius: var(--radius-premium);
             border: 1px solid var(--border-soft);
             box-shadow: 0 4px 20px rgba(61, 12, 36, 0.01);
+            transition: var(--transition-smooth);
         }
+
+        /* BOTÓN FLOTANTE SWITCH DE MODO NOCHE */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-blush);
+            border: 1px solid var(--border-soft);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+        .theme-toggle:hover { transform: rotate(15deg) scale(1.05); }
 
         .brand h1 { 
             font-size: 1.8rem; 
@@ -56,6 +99,20 @@
             letter-spacing: -0.03em;
         }
         .brand p { font-size: 0.9rem; color: var(--text-tag); margin: 6px 0 0 0; }
+
+        /* MÓDULO DE ANALÍTICAS / WIDGET DE PRODUCTIVIDAD RECTO */
+        .analytics-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-tag);
+        }
+        .stat-item span { color: var(--accent-pink); font-weight: 800; }
 
         .controls { 
             display: flex; 
@@ -71,7 +128,7 @@
         .search-input {
             width: 100%; 
             max-width: 380px; 
-            background-color: #ffffff;
+            background-color: var(--card-white);
             border: 1px solid var(--border-soft); 
             border-radius: var(--radius-tile);
             padding: 12px 16px; 
@@ -91,7 +148,7 @@
             align-items: center;
             gap: 6px;
             background-color: var(--card-blush);
-            color: #ad1457;
+            color: var(--text-title);
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
@@ -101,17 +158,42 @@
             transition: var(--transition-smooth);
             white-space: nowrap;
         }
-        .sheets-btn:hover {
-            background-color: #ad1457;
-            color: #ffffff;
+        .sheets-btn:hover { background-color: var(--accent-pink); color: #ffffff; }
+
+        /* MÓDULO DE QUICK CHIPS PARA FILTRADO VERTICAL SIN TIPEAR */
+        .chips-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .chip {
+            background: var(--card-white);
+            border: 1px solid var(--border-soft);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-tag);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: capitalize;
+        }
+        .chip.active, .chip:hover {
+            background: var(--text-title);
+            color: var(--card-white);
+            border-color: var(--text-title);
         }
 
         .status-badge {
             display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
             font-weight: 700; padding: 6px 12px; border-radius: 30px; 
-            background: var(--card-blush); color: #ad1457;
+            background: var(--card-blush); color: var(--text-title);
         }
 
+        /* REJILLA DE ENCAJE COMPACTO SEGURO (EMBONADO AUTOMÁTICO) */
         #dashboard { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); 
@@ -132,7 +214,6 @@
         }
         .card:nth-child(odd) { background-color: var(--card-white); }
         .card:nth-child(even) { background-color: var(--card-blush); }
-        
         .card:hover { 
             transform: translateY(-2px); 
             box-shadow: 0 8px 20px rgba(244, 143, 177, 0.1); 
@@ -148,17 +229,13 @@
             padding-bottom: 8px;
         }
 
-        .grid-buttons { 
-            display: flex;
-            flex-direction: column;
-            gap: 8px; 
-        }
+        .grid-buttons { display: flex; flex-direction: column; gap: 8px; }
 
         .copy-item {
             display: flex; 
             flex-direction: column;
-            background-color: #ffffff; 
-            border: 1px solid rgba(249, 230, 235, 0.8);
+            background-color: var(--card-white); 
+            border: 1px solid var(--border-soft);
             border-radius: var(--radius-tile); 
             padding: 10px 12px; 
             cursor: pointer; 
@@ -167,7 +244,6 @@
             width: 100%;
             overflow: hidden;
         }
-        .card:nth-child(even) .copy-item { border-color: rgba(255, 255, 255, 0.9); }
         .copy-item:hover { 
             border-color: var(--accent-pink); 
             transform: translateX(2px);
@@ -200,40 +276,59 @@
         .copy-item.success .item-preview { color: var(--success-text); }
         .copy-item.success .item-tag { color: var(--success-text); }
 
-        /* 👑 ESTILIZADO OSCURO PREMIUM PARA EL BLOC DE NOTAS EFÍMERO */
+        /* CONFIGURACIÓN CROMÁTICA DEL BLOC DE NOTAS CON HERRAMIENTAS */
         #static-scratchpad {
-            background-color: #3d0c24 !important; /* Fuerza el color oscuro corporativo vino */
-            border-color: #2b0618;
-            box-shadow: 0 4px 15px rgba(61, 12, 36, 0.15);
+            background-color: var(--scratch-bg) !important; 
+            border-color: rgba(61, 12, 36, 0.1);
+            box-shadow: 0 4px 15px rgba(61, 12, 36, 0.05);
         }
         #static-scratchpad .card-title {
-            color: #ffffff !important;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+            color: var(--scratch-text) !important;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        #char-counter { font-size: 0.65rem; color: var(--accent-pink); font-weight: 400; }
+
         .scratchpad-textarea {
             width: 100%;
-            height: 105px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-tile);
             padding: 10px;
             font-family: var(--font-display);
             font-size: 0.85rem;
-            color: #fff0f3; /* Texto claro */
+            color: var(--scratch-text); 
             resize: none;
             box-sizing: border-box;
-            background-color: #4d1531; /* Fondo ligeramente más claro que la tarjeta */
+            background-color: var(--scratch-input); 
             line-height: 1.4;
             transition: var(--transition-smooth);
         }
-        .scratchpad-textarea::placeholder {
-            color: #b28ea0; /* Placeholder sutil */
+        .scratchpad-textarea:focus { outline: none; border-color: var(--accent-pink); }
+
+        /* BOTONES DE UTILERÍA DE TEXTO EXCLUSIVOS (MAX UX/UI) */
+        .scratch-tools {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
         }
-        .scratchpad-textarea:focus {
-            outline: none;
-            border-color: var(--accent-pink);
-            background-color: #591b3b;
-            box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.2);
+        .tool-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--scratch-text);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 6px 2px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            text-align: center;
         }
+        .tool-btn:hover { background: var(--accent-pink); color: #ffffff; }
 
         footer {
             text-align: center;
@@ -242,7 +337,6 @@
             color: var(--text-title);
             opacity: 0.35;
             letter-spacing: 0.04em;
-            font-weight: 500;
             font-style: italic;
         }
 
@@ -253,16 +347,28 @@
 
     <div class="container">
         <header>
+            <button class="theme-toggle" id="themeBtn" title="Cambiar tema visual">🌙</button>
+            
             <div class="brand">
                 <h1>🌸 Sitio de la mejor administradora Alito</h1>
-                <p>Tu ecosistema de control corporativo diseñado a medida</p>
+                <p>Tu ecosistema de control corporativo avanzado</p>
             </div>
-            <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando sistema...</div>
+            
+            <div class="analytics-bar">
+                <div class="stat-item">Tarjetas: <span id="stat-cards">0</span></div>
+                <div class="stat-item">Atajos: <span id="stat-buttons">0</span></div>
+                <div class="stat-item">Copias Hoy: <span id="stat-copied">0</span></div>
+            </div>
+
             <div class="controls">
-                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Buscar por tarjeta, etiqueta o contenido..." oninput="filterDashboard()">
+                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Buscar por cualquier coincidencia..." oninput="filterDashboard()">
                 <a href="https://docs.google.com/spreadsheets/d/1pLfFr3mM8BI6wtjwGgwp4fMjl3bCtIjZP2iTd3wZ9Do/edit?usp=sharing" target="_blank" class="sheets-btn">
                     📊 Editar Base de Datos
                 </a>
+            </div>
+
+            <div class="chips-container" id="chipsBox">
+                <div class="chip active" onclick="filterByChip('todos', this)">⭐ Todos</div>
             </div>
         </header>
 
@@ -282,8 +388,13 @@
             </section>
 
             <section class="card" data-category="bloc de notas 📝" id="static-scratchpad">
-                <h2 class="card-title">Borrador Rápido 📝</h2>
-                <textarea id="scratchpad" class="scratchpad-textarea" placeholder="🌸 Alito, pega o escribe aquí tus datos temporales para armar tus mensajes..."></textarea>
+                <h2 class="card-title">Borrador Rápido <span id="char-counter">0 caracteres</span></h2>
+                <textarea id="scratchpad" class="scratchpad-textarea" placeholder="🌸 Alito, pega datos aquí para procesar o limpiar textos..."></textarea>
+                <div class="scratch-tools">
+                    <button class="tool-btn" onclick="transformText('up')">ABC</button>
+                    <button class="tool-btn" onclick="transformText('down')">abc</button>
+                    <button class="tool-btn" onclick="transformText('clear')">Limpiar</button>
+                </div>
             </section>
         </main>
     </div>
@@ -296,42 +407,89 @@
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
 
         let masterData = [];
+        let copyCounter = parseInt(localStorage.getItem('alito_copy_count')) || 0;
 
-        // Inicialización segura de Notas Fijas
+        // Inicialización básica del sistema
+        document.getElementById('stat-copied').innerText = copyCounter;
         document.getElementById('nota1').customTextToCopy = "Lo haces bien, mi rabanito ❤️";
         document.getElementById('nota1').addEventListener('click', function() { copyText(this.customTextToCopy, this); });
         document.getElementById('nota2').customTextToCopy = "Eres la administradora más increíble del mundo 🌸";
         document.getElementById('nota2').addEventListener('click', function() { copyText(this.customTextToCopy, this); });
 
-        // LÓGICA DEL BLOC DE NOTAS EFÍMERO (LOCALSTORAGE)
+        /* MÓDULO SWITCH PREMIUM DE MODO OSCURO */
+        const themeBtn = document.getElementById('themeBtn');
+        if (localStorage.getItem('alito_theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeBtn.innerText = "☀️";
+        }
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeBtn.innerText = isDark ? "☀️" : "🌙";
+            localStorage.setItem('alito_theme', isDark ? 'dark' : 'light');
+        });
+
+        /* MÓDULO INTERACTIVO DE COLO DE NOTAS CON MONITOREO */
         const scratchpad = document.getElementById('scratchpad');
-        
+        const charCounter = document.getElementById('char-counter');
         const savedText = localStorage.getItem('alito_scratchpad');
         if (savedText) {
             scratchpad.value = savedText;
+            charCounter.innerText = `${savedText.length} caracteres`;
         }
-
         scratchpad.addEventListener('input', function() {
             localStorage.setItem('alito_scratchpad', scratchpad.value);
+            charCounter.innerText = `${scratchpad.value.length} caracteres`;
         });
 
+        function transformText(action) {
+            if (action === 'up') scratchpad.value = scratchpad.value.toUpperCase();
+            if (action === 'down') scratchpad.value = scratchpad.value.toLowerCase();
+            if (action === 'clear') scratchpad.value = "";
+            localStorage.setItem('alito_scratchpad', scratchpad.value);
+            charCounter.innerText = `${scratchpad.value.length} caracteres`;
+        }
+
         function fetchCloudData() {
-            const statusBadge = document.getElementById('networkStatus');
             const xhr = new XMLHttpRequest();
             xhr.open("GET", SCRIPT_URL, true);
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     try {
                         masterData = JSON.parse(xhr.responseText);
+                        buildChips(masterData);
                         renderDashboard(masterData);
-                        statusBadge.innerHTML = "🟢 Conexión Segura e Inteligente";
-                        statusBadge.style.background = "#e8f5e9";
-                        statusBadge.style.color = "#2e7d32";
-                    } catch (e) { showErrorUI(); }
-                } else { showErrorUI(); }
+                        calculateStats(masterData);
+                    } catch (e) { showError(); }
+                } else { showError(); }
             };
-            xhr.onerror = function () { showErrorUI(); };
+            xhr.onerror = function () { showError(); };
             xhr.send();
+        }
+
+        /* CONSTRUCTOR AUTOMÁTICO DE FILTROS (CHIPS) */
+        function buildChips(data) {
+            const chipsBox = document.getElementById('chipsBox');
+            // Resetea manteniendo el botón "Todos"
+            chipsBox.innerHTML = '<div class="chip active" onclick="filterByChip(\'todos\', this)">⭐ Todo</div>';
+            
+            const categories = new Set();
+            data.forEach(item => { if(item.tituloTarjeta) categories.add(item.tituloTarjeta); });
+            
+            categories.forEach(cat => {
+                const div = document.createElement('div');
+                div.className = 'chip';
+                div.innerText = cat.toLowerCase();
+                div.addEventListener('click', function() { filterByChip(cat.toLowerCase(), this); });
+                chipsBox.appendChild(div);
+            });
+        }
+
+        function calculateStats(data) {
+            document.getElementById('stat-cards').innerText = data.length + 2; // +2 fijas
+            let btnCount = 2; // Notas de amor fijas
+            data.forEach(item => { btnCount += item.botones.length; });
+            document.getElementById('stat-buttons').innerText = btnCount;
         }
 
         function renderDashboard(data) {
@@ -396,21 +554,20 @@
             textArea.value = text;
             textArea.style.position = "fixed";
             textArea.style.left = "-99999px";
-            textArea.style.top = "-99999px";
             textArea.style.opacity = "0";
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
-            try {
-                document.execCommand('copy');
-                triggerSuccess(element);
-            } catch (err) {
-                console.error("Error al copiar", err);
-            }
+            try { document.execCommand('copy'); triggerSuccess(element); } catch (err) {}
             document.body.removeChild(textArea);
         }
 
         function triggerSuccess(element) {
+            // Incrementar contador analítico de copias
+            copyCounter++;
+            localStorage.setItem('alito_copy_count', copyCounter);
+            document.getElementById('stat-copied').innerText = copyCounter;
+
             const tagSpan = element.querySelector('.item-tag span');
             const indicator = element.querySelector('.copy-indicator');
             const originalTag = tagSpan.innerText;
@@ -426,14 +583,10 @@
             }, 900);
         }
 
-        function showErrorUI() {
-            const statusBadge = document.getElementById('networkStatus');
-            statusBadge.innerHTML = "🔴 Error de sincronización de la base";
-            statusBadge.style.background = "#fee2e2";
-            statusBadge.style.color = "#991b1b";
-        }
-
+        /* FILTRADO DINÁMICO POR TIPEO MANUAL */
         function filterDashboard() {
+            // Limpia chips activos al escribir en barra libre
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
             const query = document.getElementById('searchBar').value.toLowerCase();
             document.querySelectorAll('.card').forEach(card => {
                 const text = card.innerText.toLowerCase();
@@ -441,6 +594,24 @@
                 else card.classList.add('hidden');
             });
         }
+
+        /* FILTRADO INSTANTÁNEO POR CLIC EN CHIP UX */
+        window.filterByChip = function(categoryName, chipElement) {
+            document.getElementById('searchBar').value = ""; // Limpiar buscador
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            chipElement.classList.add('active');
+
+            document.querySelectorAll('.card').forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (categoryName === 'todos' || cardCat === 'notas de amor ✨' || cardCat === 'bloc de notas 📝' || cardCat === categoryName) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function showError() { console.log("Error de enlace."); }
 
         window.addEventListener('DOMContentLoaded', fetchCloudData);
     </script>
