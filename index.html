@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio de la mejor administradora Alito</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+    <title>🌸 Sitio de la mejor administradora Alito</title>
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         :root {
-            --bg-main: #fffafb; /* Fondo crema rosado muy suave */
-            --surface: #ffffff;
-            --text-primary: #5d4a4a; /* Marrón suave para legibilidad */
-            --text-secondary: #a89090;
+            --bg-main: #fffdfd; /* Fondo limpio y luminoso */
+            --card-clara: #ffffff; /* Blanco lino puro */
+            --card-oscura: #fff2f5; /* Rosa sutil para el efecto tablero */
+            --text-title: #4a0e2e; /* Color vino oscuro, fuerte y recto para categorías */
+            --text-body: #4a3b43; /* Tono neutro oscuro para los datos */
+            --text-muted: #9c8290; /* Tono pastel bajo para etiquetas */
             --border: #fce4ec;
-            --accent: #f8bbd0; /* Rosa pastel clásico */
-            --accent-hover: #f48fb1;
-            --success: #c8e6c9;
-            --radius-lg: 24px;
-            --radius-md: 14px;
-            --shadow-sm: 0 4px 10px rgba(248, 187, 208, 0.2);
-            --shadow-md: 0 12px 30px -5px rgba(248, 187, 208, 0.3);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent: #f8bbd0;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --shadow-sm: 0 4px 12px rgba(244, 143, 177, 0.12);
+            --shadow-md: 0 16px 35px -10px rgba(244, 143, 177, 0.25);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* Tipografía del sistema: Limpia, recta, precisa y ultra moderna */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-main);
-            color: var(--text-primary);
+            color: var(--text-body);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -39,20 +40,21 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 30px;
-            background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+            background: #ffffff;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
         }
 
+        /* Jerarquía Máxima: Título principal de la app */
         .brand h1 { 
-            font-size: 2rem; 
+            font-size: 1.85rem; 
             font-weight: 800; 
             margin: 0; 
-            color: #880e4f;
-            letter-spacing: -0.02em;
+            color: var(--text-title);
+            letter-spacing: -0.03em;
         }
-        .brand p { font-size: 0.95rem; color: var(--text-secondary); margin: 10px 0 0 0; font-style: italic; }
+        .brand p { font-size: 0.9rem; color: var(--text-muted); margin: 8px 0 0 0; font-style: italic; }
 
         .controls { 
             display: flex; 
@@ -64,40 +66,35 @@
             width: 100%; 
         }
 
-        @media (min-width: 768px) {
-            .controls {
-                flex-direction: row;
-            }
-        }
+        @media (min-width: 768px) { .controls { flex-direction: row; } }
 
         .search-input {
             width: 100%; 
             max-width: 400px; 
-            background-color: var(--surface);
+            background-color: #ffffff;
             border: 1px solid var(--border); 
             border-radius: var(--radius-md);
             padding: 14px 20px; 
             font-size: 0.95rem; 
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
             transition: var(--transition);
             box-sizing: border-box;
         }
         .search-input:focus { 
             outline: none; 
             border-color: var(--accent); 
-            box-shadow: 0 0 0 4px rgba(248, 187, 208, 0.25); 
+            box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.2); 
         }
 
-        /* Botón Estilo Girly para Google Sheets */
         .sheets-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: #fce4ec;
+            background-color: #fff2f5;
             color: #ad1457;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             padding: 14px 24px;
             border-radius: var(--radius-md);
             border: 1px solid #f8bbd0;
@@ -107,76 +104,115 @@
         }
         .sheets-btn:hover {
             background-color: #f8bbd0;
-            color: #880e4f;
+            color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(248, 187, 208, 0.4);
         }
 
         .status-badge {
             display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
             font-weight: 700; padding: 8px 16px; border-radius: 30px; 
-            background: #fce4ec; color: #ad1457; text-transform: uppercase;
+            background: #fff2f5; color: #ad1457; text-transform: uppercase;
         }
 
         #dashboard { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
-            gap: 30px; 
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
+            gap: 25px; 
             padding-bottom: 50px;
         }
 
+        /* 👑 EFECTO AJEDREZ INTERCALADO CON NTH-CHILD */
         .card {
-            background-color: var(--surface); 
             border: 1px solid var(--border);
             border-radius: var(--radius-lg); 
             box-shadow: var(--shadow-sm);
-            padding: 25px; 
+            padding: 24px; 
             transition: var(--transition);
             display: flex;
             flex-direction: column;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        /* Tarjetas Impares: Blancas */
+        .card:nth-child(odd) { background-color: var(--card-clara); }
+        /* Tarjetas Pares: Sutilmente Rosadas */
+        .card:nth-child(even) { background-color: var(--card-oscura); }
+
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         
+        /* Jerarquía Media: Título de Categoría Recto, Firme y Elegante */
         .card-title {
-            font-size: 1.25rem; font-weight: 700; margin: 0 0 20px 0;
-            color: #ad1457; display: flex; justify-content: space-between; align-items: center;
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            margin: 0 0 18px 0;
+            color: var(--text-title); 
+            letter-spacing: -0.01em;
+            border-bottom: 2px dashed rgba(136, 14, 79, 0.1); 
+            padding-bottom: 10px;
+            text-transform: capitalize;
         }
 
-        .grid-buttons { display: flex; flex-direction: column; gap: 12px; }
+        .grid-buttons { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+        }
 
+        .grid-buttons .copy-item:only-child { grid-column: span 2; }
+
+        /* Jerarquía Baja: Elementos de Copiado Sutiles, Limpios y Ergonómicos */
         .copy-item {
-            display: flex; align-items: center; justify-content: space-between;
-            background-color: #fff9fa; border: 1px solid #fff0f3;
-            border-radius: var(--radius-md); padding: 15px; cursor: pointer; transition: var(--transition);
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff; 
+            border: 1px solid rgba(252, 228, 236, 0.6);
+            border-radius: var(--radius-md); 
+            padding: 12px; 
+            cursor: pointer; 
+            transition: var(--transition);
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
         }
         .copy-item:hover { 
-            background-color: #fce4ec; 
+            background-color: #ffffff;
             border-color: var(--accent); 
+            box-shadow: 0 4px 10px rgba(244, 143, 177, 0.15);
         }
         
-        .item-info { display: flex; flex-direction: column; overflow: hidden; width: 100%; }
-        .item-label { font-size: 0.95rem; font-weight: 600; color: #4a148c; }
-        .item-preview { font-size: 0.8rem; color: #880e4f; margin-top: 4px; opacity: 0.7; }
-        
-        .copy-status { font-size: 0.75rem; font-weight: 800; color: #ec407a; opacity: 0.6; }
+        /* Texto ultra-específico de la etiqueta */
+        .item-tag { 
+            font-size: 0.65rem; 
+            font-weight: 700; 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+        /* El texto real que se copiará */
+        .item-preview { 
+            font-size: 0.85rem; 
+            color: var(--text-body); 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            font-weight: 500; 
+        }
 
-        .copy-item.success { background-color: #e8f5e9; border-color: #81c784; }
-        .copy-item.success .item-label { color: #2e7d32; }
+        /* Feedback visual limpio al copiar con éxito */
+        .copy-item.success { background-color: #f4fbf6; border-color: #81c784; }
+        .copy-item.success .item-preview { color: #1b5e20; }
+        .copy-item.success .item-tag { color: #2e7d32; font-weight: 800; }
 
-        /* Footer Estilo Roblecito */
         footer {
             text-align: center;
             padding: 30px;
-            font-size: 0.85rem;
-            color: #ad1457;
-            opacity: 0.45;
+            font-size: 0.8rem;
+            color: var(--text-title);
+            opacity: 0.4;
             letter-spacing: 0.05em;
             font-style: italic;
         }
 
         .hidden { display: none !important; }
-        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid var(--accent); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -189,7 +225,7 @@
             </div>
             <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando...</div>
             <div class="controls">
-                <input type="text" id="searchBar" class="search-input" placeholder="🌸 ¿Qué necesitas copiar hoy, Alito?" oninput="filterDashboard()">
+                <input type="text" id="searchBar" class="search-input" placeholder="🌸 Buscar por nombre o cualquier dato..." oninput="filterDashboard()">
                 <a href="https://docs.google.com/spreadsheets/d/1pLfFr3mM8BI6wtjwGgwp4fMjl3bCtIjZP2iTd3wZ9Do/edit?usp=sharing" target="_blank" class="sheets-btn">
                     📊 Editar Base de Datos
                 </a>
@@ -197,6 +233,19 @@
         </header>
 
         <main id="dashboard">
+            <section class="card" data-category="notas de amor ✨">
+                <h2 class="card-title">Notas de Amor ✨</h2>
+                <div class="grid-buttons">
+                    <div class="copy-item" onclick="copyText('Lo haces bien, mi rabanito ❤️', this)">
+                        <span class="item-tag">Ánimo</span>
+                        <span class="item-preview">Lo haces bien, mi rabanito ❤️</span>
+                    </div>
+                    <div class="copy-item" onclick="copyText('Eres la administradora más increíble del mundo 🌸', this)">
+                        <span class="item-tag">Te amo</span>
+                        <span class="item-preview">Eres la administradora más increíble...</span>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -207,24 +256,21 @@
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
 
-        let masterData = {};
+        let masterData = [];
 
         function fetchCloudData() {
-            const dashboard = document.getElementById('dashboard');
-            dashboard.innerHTML = '<div style="grid-column: 1/-1; text-align:center;"><div class="spinner"></div><p style="margin-top:15px; color:#ad1457;">Trayendo tus datos, rabanito...</p></div>';
-
+            const statusBadge = document.getElementById('networkStatus');
             const xhr = new XMLHttpRequest();
             xhr.open("GET", SCRIPT_URL, true);
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     try {
-                        const rawData = JSON.parse(xhr.responseText);
-                        masterData = groupDataByCategory(rawData);
+                        masterData = JSON.parse(xhr.responseText);
                         renderDashboard(masterData);
-                        document.getElementById('networkStatus').innerHTML = "✨ En Línea para Alito";
-                        document.getElementById('networkStatus').className = "status-badge";
-                        document.getElementById('networkStatus').style.background = "#e8f5e9";
-                        document.getElementById('networkStatus').style.color = "#2e7d32";
+                        statusBadge.innerHTML = "✨ En Línea para Alito";
+                        statusBadge.className = "status-badge";
+                        statusBadge.style.background = "#e8f5e9";
+                        statusBadge.style.color = "#2e7d32";
                     } catch (e) { showErrorUI(); }
                 } else { showErrorUI(); }
             };
@@ -232,67 +278,67 @@
             xhr.send();
         }
 
-        function groupDataByCategory(arrayData) {
-            const tree = {
-                "Notas de Amor ✨": [
-                    { label: "¡Ánimo!", targetText: "Lo haces bien, mi rabanito ❤️" },
-                    { label: "Te amo", targetText: "Eres la administradora más increíble del mundo 🌸" }
-                ]
-            };
-            
-            arrayData.forEach(row => {
-                const cat = row.categoria;
-                if (!cat) return;
-                if (!tree[cat]) tree[cat] = [];
-                tree[cat].push({ label: row.etiqueta, targetText: row.texto });
-            });
-            return tree;
-        }
-
         function renderDashboard(data) {
             const dashboard = document.getElementById('dashboard');
+            const notasCard = dashboard.querySelector('[data-category="notas de amor ✨"]');
             dashboard.innerHTML = '';
+            if(notasCard) dashboard.appendChild(notasCard);
 
-            Object.keys(data).forEach(catName => {
+            data.forEach(item => {
                 const card = document.createElement('section');
                 card.className = 'card';
-                card.setAttribute('data-category', catName.toLowerCase());
-                card.innerHTML = `<h2 class="card-title"><span>${catName}</span></h2><div class="grid-buttons"></div>`;
+                card.setAttribute('data-category', item.tituloTarjeta.toLowerCase());
 
-                const btnGrid = card.querySelector('.grid-buttons');
-                data[catName].forEach(item => {
-                    const block = document.createElement('div');
-                    block.className = 'copy-item';
-                    block.innerHTML = `<div class="item-info"><span class="item-label">${item.label}</span><span class="item-preview">${item.targetText}</span></div><span class="copy-status">Copiar</span>`;
-                    block.addEventListener('click', () => {
-                        navigator.clipboard.writeText(item.targetText).then(() => {
-                            const original = block.querySelector('.copy-status').innerText;
-                            block.classList.add('success');
-                            block.querySelector('.copy-status').innerText = '✨ ¡Listo!';
-                            setTimeout(() => {
-                                block.classList.remove('success');
-                                block.querySelector('.copy-status').innerText = original;
-                            }, 1000);
-                        });
-                    });
-                    btnGrid.appendChild(block);
+                let htmlContent = `<h2 class="card-title">${item.tituloTarjeta}</h2><div class="grid-buttons">`;
+
+                item.botones.forEach(btn => {
+                    htmlContent += `
+                        <div class="copy-item" onclick="copyText('${btn.texto.replace(/'/g, "\\'")}', this)">
+                            <span class="item-tag">${btn.etiqueta}</span>
+                            <span class="item-preview">${btn.texto}</span>
+                        </div>`;
                 });
+
+                htmlContent += `</div>`;
+                card.innerHTML = htmlContent;
                 dashboard.appendChild(card);
             });
+        }
+
+        function copyText(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                triggerSuccess(element);
+            }).catch(() => {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                triggerSuccess(element);
+                document.body.removeChild(textArea);
+            });
+        }
+
+        function triggerSuccess(element) {
+            const tag = element.querySelector('.item-tag');
+            const originalTag = tag.innerText;
+            element.classList.add('success');
+            tag.innerText = '✨ COPIADO';
+            setTimeout(() => {
+                element.classList.remove('success');
+                tag.innerText = originalTag;
+            }, 1000);
+        }
+
+        function showErrorUI() {
+            document.getElementById('networkStatus').innerHTML = "💝 Error de sincronización";
         }
 
         function filterDashboard() {
             const query = document.getElementById('searchBar').value.toLowerCase();
             document.querySelectorAll('.card').forEach(card => {
-                let hasMatch = false;
-                card.querySelectorAll('.copy-item').forEach(item => {
-                    const text = item.innerText.toLowerCase();
-                    if (text.includes(query)) {
-                        item.classList.remove('hidden');
-                        hasMatch = true;
-                    } else item.classList.add('hidden');
-                });
-                if (hasMatch || card.getAttribute('data-category').includes(query)) card.classList.remove('hidden');
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) card.classList.remove('hidden');
                 else card.classList.add('hidden');
             });
         }
