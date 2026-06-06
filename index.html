@@ -7,20 +7,20 @@
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         :root {
-            --bg-main: #fbf8f9;         /* Fondo neutral limpio de alta gama */
-            --card-white: #ffffff;      /* Blanco lino puro */
-            --card-blush: #fff5f7;      /* Rosa pastel lavado para efecto ajedrez */
-            --border-soft: #f9e6eb;     /* Líneas finas de separación */
-            --text-title: #3d0c24;      /* Letra recta, fuerte y sobria para encabezados */
-            --text-body: #42363c;       /* Letra limpia para lectura rápida de datos */
-            --text-tag: #9c828e;        /* Micro-etiquetas técnicas */
-            --accent-pink: #f48fb1;     /* Rosa de enfoque */
-            --success-bg: #e8f5e9;      /* Verde menta para copiado exitoso */
+            --bg-main: #fbf8f9;         
+            --card-white: #ffffff;      
+            --card-blush: #fff5f7;      
+            --border-soft: #f9e6eb;     
+            --text-title: #3d0c24;      
+            --text-body: #42363c;       
+            --text-tag: #9c828e;        
+            --accent-pink: #f48fb1;     
+            --success-bg: #e8f5e9;      
             --success-text: #1b5e20;
             
             --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --radius-premium: 18px;
-            --radius-tile: 12px;
+            --radius-premium: 16px;
+            --radius-tile: 10px;
             --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -29,7 +29,7 @@
             background-color: var(--bg-main);
             color: var(--text-body);
             margin: 0;
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -38,32 +38,31 @@
 
         .container { max-width: 1200px; margin: 0 auto; flex: 1; width: 100%; }
 
-        /* HEADER PREMIUM CON JERARQUÍA RECTA */
         header {
             text-align: center;
-            margin-bottom: 35px;
-            padding: 35px 24px;
+            margin-bottom: 25px;
+            padding: 30px 20px;
             background: #ffffff;
             border-radius: var(--radius-premium);
             border: 1px solid var(--border-soft);
-            box-shadow: 0 4px 20px rgba(61, 12, 36, 0.02);
+            box-shadow: 0 4px 20px rgba(61, 12, 36, 0.01);
         }
 
         .brand h1 { 
-            font-size: 2rem; 
+            font-size: 1.8rem; 
             font-weight: 800; 
             margin: 0; 
             color: var(--text-title);
             letter-spacing: -0.03em;
         }
-        .brand p { font-size: 0.95rem; color: var(--text-tag); margin: 8px 0 0 0; }
+        .brand p { font-size: 0.9rem; color: var(--text-tag); margin: 6px 0 0 0; }
 
         .controls { 
             display: flex; 
             flex-direction: column;
             align-items: center;
             justify-content: center; 
-            margin-top: 25px; 
+            margin-top: 20px; 
             gap: 12px; 
             width: 100%; 
         }
@@ -71,11 +70,11 @@
 
         .search-input {
             width: 100%; 
-            max-width: 420px; 
+            max-width: 380px; 
             background-color: #ffffff;
             border: 1px solid var(--border-soft); 
             border-radius: var(--radius-tile);
-            padding: 14px 18px; 
+            padding: 12px 16px; 
             font-size: 0.95rem; 
             color: var(--text-body);
             transition: var(--transition-smooth);
@@ -84,19 +83,19 @@
         .search-input:focus { 
             outline: none; 
             border-color: var(--accent-pink); 
-            box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.15); 
+            box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.12); 
         }
 
         .sheets-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background-color: var(--card-blush);
             color: #ad1457;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
-            padding: 14px 22px;
+            padding: 12px 20px;
             border-radius: var(--radius-tile);
             border: 1px solid var(--border-soft);
             transition: var(--transition-smooth);
@@ -108,64 +107,60 @@
         }
 
         .status-badge {
-            display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem;
-            font-weight: 700; padding: 6px 14px; border-radius: 30px; 
+            display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
+            font-weight: 700; padding: 6px 12px; border-radius: 30px; 
             background: var(--card-blush); color: #ad1457;
         }
 
-        /* CONFIGURACIÓN ASÍNCRONA DE TARJETAS DE AJEDREZ */
         #dashboard { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-            gap: 25px; 
-            padding-bottom: 60px;
-            align-items: start; /* Evita que las tarjetas vecinas se estiren de forma desigual */
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); 
+            gap: 16px; 
+            padding-bottom: 50px;
+            align-items: start; 
         }
 
-        /* 👑 EFECTO AJEDREZ MATEMÁTICO (RITMO VISUAL DE COLORES INTERCALADOS) */
         .card {
             border: 1px solid var(--border-soft);
             border-radius: var(--radius-premium); 
-            padding: 24px; 
+            padding: 20px; 
             transition: var(--transition-smooth);
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
-            box-shadow: 0 4px 12px rgba(61, 12, 36, 0.01);
+            box-shadow: 0 2px 8px rgba(61, 12, 36, 0.01);
         }
         .card:nth-child(odd) { background-color: var(--card-white); }
         .card:nth-child(even) { background-color: var(--card-blush); }
         
         .card:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 12px 24px rgba(244, 143, 177, 0.12); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(244, 143, 177, 0.1); 
         }
         
         .card-title {
-            font-size: 1.25rem; 
+            font-size: 1.15rem; 
             font-weight: 700; 
-            margin: 0 0 16px 0;
+            margin: 0 0 14px 0;
             color: var(--text-title); 
             letter-spacing: -0.02em;
-            border-bottom: 2px solid rgba(61, 12, 36, 0.04); 
-            padding-bottom: 12px;
-            text-transform: capitalize;
+            border-bottom: 2px solid rgba(61, 12, 36, 0.03); 
+            padding-bottom: 8px;
         }
 
         .grid-buttons { 
             display: flex;
             flex-direction: column;
-            gap: 10px; 
+            gap: 8px; 
         }
 
-        /* DISEÑO DE BOTÓN DE UN SÓLO CLIC AUTOMÁTICO (TRUE UX/UI) */
         .copy-item {
             display: flex; 
             flex-direction: column;
             background-color: #ffffff; 
             border: 1px solid rgba(249, 230, 235, 0.8);
             border-radius: var(--radius-tile); 
-            padding: 12px 14px; 
+            padding: 10px 12px; 
             cursor: pointer; 
             transition: var(--transition-smooth);
             box-sizing: border-box;
@@ -184,19 +179,19 @@
             color: var(--text-tag); 
             text-transform: uppercase; 
             letter-spacing: 0.06em;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             display: flex;
             justify-content: space-between;
             width: 100%;
         }
         
         .item-preview { 
-            font-size: 0.88rem; 
+            font-size: 0.85rem; 
             color: var(--text-body); 
             font-weight: 600; 
             white-space: nowrap;       
             overflow: hidden;          
-            text-overflow: ellipsis; /* Puntos suspensivos estéticos si el texto es masivo */
+            text-overflow: ellipsis;   
             display: block;
             width: 100%;
         }
@@ -205,10 +200,45 @@
         .copy-item.success .item-preview { color: var(--success-text); }
         .copy-item.success .item-tag { color: var(--success-text); }
 
+        /* 👑 ESTILIZADO OSCURO PREMIUM PARA EL BLOC DE NOTAS EFÍMERO */
+        #static-scratchpad {
+            background-color: #3d0c24 !important; /* Fuerza el color oscuro corporativo vino */
+            border-color: #2b0618;
+            box-shadow: 0 4px 15px rgba(61, 12, 36, 0.15);
+        }
+        #static-scratchpad .card-title {
+            color: #ffffff !important;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+        }
+        .scratchpad-textarea {
+            width: 100%;
+            height: 105px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-tile);
+            padding: 10px;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: #fff0f3; /* Texto claro */
+            resize: none;
+            box-sizing: border-box;
+            background-color: #4d1531; /* Fondo ligeramente más claro que la tarjeta */
+            line-height: 1.4;
+            transition: var(--transition-smooth);
+        }
+        .scratchpad-textarea::placeholder {
+            color: #b28ea0; /* Placeholder sutil */
+        }
+        .scratchpad-textarea:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            background-color: #591b3b;
+            box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.2);
+        }
+
         footer {
             text-align: center;
-            padding: 40px 24px;
-            font-size: 0.85rem;
+            padding: 30px 20px;
+            font-size: 0.8rem;
             color: var(--text-title);
             opacity: 0.35;
             letter-spacing: 0.04em;
@@ -237,7 +267,7 @@
         </header>
 
         <main id="dashboard">
-            <section class="card" data-category="notas de amor ✨">
+            <section class="card" data-category="notas de amor ✨" id="static-notas">
                 <h2 class="card-title">Notas de Amor ✨</h2>
                 <div class="grid-buttons">
                     <div class="copy-item" id="nota1">
@@ -250,6 +280,11 @@
                     </div>
                 </div>
             </section>
+
+            <section class="card" data-category="bloc de notas 📝" id="static-scratchpad">
+                <h2 class="card-title">Borrador Rápido 📝</h2>
+                <textarea id="scratchpad" class="scratchpad-textarea" placeholder="🌸 Alito, pega o escribe aquí tus datos temporales para armar tus mensajes..."></textarea>
+            </section>
         </main>
     </div>
 
@@ -258,16 +293,27 @@
     </footer>
 
     <script>
-        // TU ENLACE OFICIAL INYECTADO A LA PERFECCIÓN
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
 
         let masterData = [];
 
-        // Inicializar las notas fijas con el nuevo sistema seguro
+        // Inicialización segura de Notas Fijas
         document.getElementById('nota1').customTextToCopy = "Lo haces bien, mi rabanito ❤️";
         document.getElementById('nota1').addEventListener('click', function() { copyText(this.customTextToCopy, this); });
         document.getElementById('nota2').customTextToCopy = "Eres la administradora más increíble del mundo 🌸";
         document.getElementById('nota2').addEventListener('click', function() { copyText(this.customTextToCopy, this); });
+
+        // LÓGICA DEL BLOC DE NOTAS EFÍMERO (LOCALSTORAGE)
+        const scratchpad = document.getElementById('scratchpad');
+        
+        const savedText = localStorage.getItem('alito_scratchpad');
+        if (savedText) {
+            scratchpad.value = savedText;
+        }
+
+        scratchpad.addEventListener('input', function() {
+            localStorage.setItem('alito_scratchpad', scratchpad.value);
+        });
 
         function fetchCloudData() {
             const statusBadge = document.getElementById('networkStatus');
@@ -290,9 +336,12 @@
 
         function renderDashboard(data) {
             const dashboard = document.getElementById('dashboard');
-            const notasCard = dashboard.querySelector('[data-category="notas de amor ✨"]');
+            const notasCard = document.getElementById('static-notas');
+            const scratchCard = document.getElementById('static-scratchpad');
+            
             dashboard.innerHTML = '';
             if(notasCard) dashboard.appendChild(notasCard);
+            if(scratchCard) dashboard.appendChild(scratchCard);
 
             data.forEach(item => {
                 const card = document.createElement('section');
@@ -310,8 +359,6 @@
                 item.botones.forEach(btn => {
                     const copyItem = document.createElement('div');
                     copyItem.className = 'copy-item';
-                    
-                    // SEGURIDAD UX: Almacenamos el texto crudo en la memoria del elemento para que NADA lo rompa
                     copyItem.customTextToCopy = btn.texto; 
 
                     copyItem.innerHTML = `
@@ -322,7 +369,6 @@
                         <span class="item-preview">${btn.texto}</span>
                     `;
 
-                    // Disparador automático silencioso de un solo clic
                     copyItem.addEventListener('click', function() {
                         copyText(this.customTextToCopy, this);
                     });
