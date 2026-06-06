@@ -130,40 +130,54 @@
     </div>
 
     <script>
-        // TU LINK OFICIAL TOTALMENTE INTEGRADO:
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
 
         let masterData = {};
 
-        async function fetchCloudData() {
+        function fetchCloudData() {
             const dashboard = document.getElementById('dashboard');
             const statusBadge = document.getElementById('networkStatus');
 
-            try {
-                const response = await fetch(SCRIPT_URL);
-                if (!response.ok) throw new Error("Error en respuesta de red");
-                
-                const rawData = await response.json();
-                masterData = groupDataByCategory(rawData);
-                
-                renderDashboard(masterData);
-                
-                statusBadge.className = "status-badge online";
-                statusBadge.innerHTML = "🟢 Conectado a la Nube";
-            } catch (error) {
-                console.error("Fallo al conectar con Google Sheets:", error);
-                statusBadge.className = "status-badge error";
-                statusBadge.innerHTML = "🔴 Error de conexión";
-                
-                dashboard.innerHTML = `
-                    <div class="state-container" style="border-color: #ef4444;">
-                        <h3 style="color: #991b1b; margin-top:0;">No se pudieron sincronizar los datos</h3>
-                        <p>Asegúrate de que en Google Sheets, dentro de 'Gestionar implementaciones', los permisos estén configurados como:<br>
-                        <strong>Ejecutar como:</strong> Yo<br>
-                        <strong>Quién tiene acceso:</strong> Cualquiera</p>
-                        <button onclick="fetchCloudData()" style="background: var(--accent); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 500; margin-top: 10px;">🔄 Reintentar Sincronización</button>
-                    </div>`;
-            }
+            // USAMOS XMLHttpRequest PARA FORZAR AL NAVEGADOR A SEGUIR LAS REDIRECCIONES DE GOOGLE SIN INPUTAR ERRORES DE CORS
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", SCRIPT_URL, true);
+            
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    try {
+                        const rawData = JSON.parse(xhr.responseText);
+                        masterData = groupDataByCategory(rawData);
+                        renderDashboard(masterData);
+                        
+                        statusBadge.className = "status-badge online";
+                        statusBadge.innerHTML = "🟢 Conectado a la Nube";
+                    } catch (e) {
+                        showErrorUI();
+                    }
+                } else {
+                    showErrorUI();
+                }
+            };
+
+            xhr.onerror = function () {
+                showErrorUI();
+            };
+
+            xhr.send();
+        }
+
+        function showErrorUI() {
+            const dashboard = document.getElementById('dashboard');
+            const statusBadge = document.getElementById('networkStatus');
+            statusBadge.className = "status-badge error";
+            statusBadge.innerHTML = "🔴 Error de conexión";
+            
+            dashboard.innerHTML = `
+                <div class="state-container" style="border-color: #ef4444;">
+                    <h3 style="color: #991b1b; margin-top:0;">No se pudieron sincronizar los datos</h3>
+                    <p>Asegúrate de haber guardado la última versión del código en Google Sheets usando una "Nueva Versión" desde el menú de implementar.</p>
+                    <button onclick="fetchCloudData()" style="background: var(--accent); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 500; margin-top: 10px;">🔄 Reintentar Sincronización</button>
+                </div>`;
         }
 
         function groupDataByCategory(arrayData) {
