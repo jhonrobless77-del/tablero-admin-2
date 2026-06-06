@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 Ecosistema Administrativo - Alito</title>
+    <title> Ecosistema Administrativo - Alito</title>
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         /* ==========================================================================
@@ -316,6 +316,7 @@
         };
         initStaticCopy('nota1', "Lo haces bien, mi rabanito ❤️");
         initStaticCopy('nota2', "Eres la administradora más increíble del mundo 🌸");
+        initStaticCopy('nota3', "Si te sientes estresada puedes darle 7 clics a Roblecito");
 
         /**
          * 🟢 ABRE-CHATS CORPORATIVO DIRECTO
@@ -546,8 +547,8 @@
             });
         }
 
-      /**
-         * 💖 EASTER EGG SECRETO: EL PROTOCOLO "ROBLECITO" (CON MÚSICA AUTOMÁTICA)
+     /**
+         * 💖 EASTER EGG SECRETO: EL PROTOCOLO "ROBLECITO" (ANTI POP-UP BLOCKERS)
          */
         let secretClicks = 0;
         const footerElement = document.querySelector('footer');
@@ -556,28 +557,23 @@
         footerElement.addEventListener('click', function() {
             secretClicks++;
             
-            // Si hace 7 clics seguidos, se activa la magia
             if(secretClicks === 7) {
                 activarLluviaDeAmor();
                 
-                // Espera un ratito para que vea los corazones, luego manda el mensaje y la música
+                // Retraso de 1 segundo para que disfrute la lluvia de corazones antes del mensaje
                 setTimeout(() => {
-                    alert("💻 ALERTA DE SISTEMA:\n\n¡Felicidades, encontraste el secreto de tu Roblecito!\n\nSolo quería recordarte en medio de tu trabajo que eres la administradora más increíble, brillante y hermosa del mundo. Vamos a romperla en todo lo que nos propongamos.\n\nTe amo inmensamente, mi rabanito. ❤️✨");
-                    
-                    // 🔥 MAGIA PURA: Abre YouTube con Roberto Carlos automáticamente en una pestaña nueva
-                    window.open('https://www.youtube.com/watch?v=jvJZj-5ef-Q&list=RDjvJZj-5ef-Q&start_radio=1', '_blank');
-                    
-                }, 800);
-                secretClicks = 0; // Reinicia el contador
+                    mostrarMensajeBlindado();
+                }, 1000);
+                
+                secretClicks = 0; 
             }
             
-            // Si deja de hacer clic por 2 segundos, el contador se reinicia
             clearTimeout(this.clickTimer);
             this.clickTimer = setTimeout(() => { secretClicks = 0; }, 2000);
         });
 
         function activarLluviaDeAmor() {
-            const emojis = ['❤️', '🌸', '✨', '💻', '💖', '🎵']; // ¡Con notitas musicales!
+            const emojis = ['❤️', '🌸', '✨', '💻', '💖', '🎵']; 
             for(let i = 0; i < 40; i++) {
                 let particle = document.createElement('div');
                 particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -585,20 +581,64 @@
                 particle.style.left = Math.random() * 100 + 'vw';
                 particle.style.top = '-5vh';
                 particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                particle.style.zIndex = '9999';
+                particle.style.zIndex = '9998';
                 particle.style.pointerEvents = 'none';
                 particle.style.transition = 'top 3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 3s ease-in';
                 document.body.appendChild(particle);
                 
-                // Efecto de caída por gravedad
                 setTimeout(() => {
                     particle.style.top = '105vh';
                     particle.style.opacity = '0';
                 }, 50);
                 
-                // Se autodestruyen para mantener la memoria de la laptop limpia
                 setTimeout(() => { particle.remove(); }, 3000);
             }
+        }
+
+        // 🛡️ MODAL A PRUEBA DE BLOQUEADORES DE POP-UPS
+        function mostrarMensajeBlindado() {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.75)';
+            overlay.style.zIndex = '9999';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.opacity = '0';
+            overlay.style.transition = 'opacity 0.4s ease';
+
+            // HTML interno de la tarjeta sorpresa
+            overlay.innerHTML = `
+                <div style="background: var(--card-white); padding: 35px 25px; border-radius: var(--radius-premium); max-width: 380px; width: 90%; text-align: center; border: 2px solid var(--accent-pink); box-shadow: 0 10px 30px rgba(244, 143, 177, 0.3); transform: translateY(20px); transition: transform 0.4s ease;">
+                    <h2 style="color: var(--accent-pink); margin: 0 0 15px 0; font-size: 1.5rem;">💻 Alerta de Sistema</h2>
+                    <p style="color: var(--text-body); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">
+                        ¡Felicidades, encontraste el secreto de tu Roblecito!<br><br>
+                        Solo quería recordarte en medio de tu trabajo que eres la persona más increíble, brillante y hermosa del mundo. Vamos a romperla en todo lo que nos propongamos.<br><br>
+                        Te amo inmensamente, mi rabanito. ❤️✨
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=jvJZj-5ef-Q&list=RDjvJZj-5ef-Q&start_radio=1" target="_blank" id="btnSorpresa" style="display: inline-block; background: var(--accent-pink); color: #ffffff; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: 800; letter-spacing: 0.05em; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(244, 143, 177, 0.4);">
+                        ABRIR SORPRESA 🎵
+                    </a>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+
+            // Efecto de aparición suave
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                overlay.querySelector('div').style.transform = 'translateY(0)';
+            }, 50);
+
+            // Cierra la tarjeta y permite que el enlace de YouTube fluya
+            document.getElementById('btnSorpresa').addEventListener('click', () => {
+                overlay.style.opacity = '0';
+                setTimeout(() => { overlay.remove(); }, 400);
+            });
         }
 
         // ==========================================
