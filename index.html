@@ -116,7 +116,6 @@
         }
         .search-input:focus { outline: none; border-color: var(--accent-pink); box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.15); }
 
-        /* 🟢 DISEÑO DEL ABRE-CHATS DE WHATSAPP */
         .wa-input {
             width: 100%; max-width: 280px; background-color: var(--card-white); border: 1px solid var(--border-soft); 
             border-radius: var(--radius-tile); padding: 14px 18px; font-size: 0.95rem; color: var(--text-body);
@@ -178,17 +177,26 @@
             border: 1px solid var(--border-soft); border-radius: var(--radius-tile); padding: 12px 14px; 
             cursor: pointer; transition: var(--transition-smooth); box-sizing: border-box; width: 100%; overflow: hidden;
         }
+        .card:nth-child(even) .copy-item { border-color: rgba(255, 255, 255, 0.9); }
         .copy-item:hover { border-color: var(--accent-pink); transform: translateX(3px); }
         
         .item-tag { 
             font-size: 0.65rem; font-weight: 700; color: var(--text-tag); text-transform: uppercase; 
-            letter-spacing: 0.06em; margin-bottom: 6px; display: flex; justify-content: space-between; width: 100%;
+            letter-spacing: 0.06em; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; width: 100%;
         }
         
         .item-preview { 
             font-size: 0.88rem; color: var(--text-body); font-weight: 600; white-space: nowrap;       
             overflow: hidden; text-overflow: ellipsis; display: block; width: 100%;
         }
+
+        /* 🌐 ESTILOS DEL MUNDITO (ENLACES INTELIGENTES) */
+        .action-wrap { display: flex; align-items: center; gap: 6px; }
+        .open-link-btn {
+            font-size: 0.9rem; cursor: pointer; opacity: 0.7; 
+            transition: var(--transition-smooth); border-radius: 50%;
+        }
+        .open-link-btn:hover { transform: scale(1.3); opacity: 1; }
 
         .copy-item.success { background-color: var(--success-bg); border-color: var(--success-text); }
         .copy-item.success .item-preview, .copy-item.success .item-tag { color: var(--success-text); }
@@ -253,11 +261,21 @@
                 <h2 class="card-title">Notas de Amor ✨</h2>
                 <div class="grid-buttons">
                     <div class="copy-item" id="nota1">
-                        <span class="item-tag"><span>Motivación</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
+                        <span class="item-tag">
+                            <span>Motivación</span>
+                            <span class="action-wrap">
+                                <span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span>
+                            </span>
+                        </span>
                         <span class="item-preview">Lo haces bien, mi rabanito ❤️</span>
                     </div>
                     <div class="copy-item" id="nota2">
-                        <span class="item-tag"><span>Dedicatoria</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
+                        <span class="item-tag">
+                            <span>Dedicatoria</span>
+                            <span class="action-wrap">
+                                <span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span>
+                            </span>
+                        </span>
                         <span class="item-preview">Eres la administradora más increíble del mundo 🌸</span>
                     </div>
                 </div>
@@ -300,30 +318,21 @@
         initStaticCopy('nota2', "Eres la administradora más increíble del mundo 🌸");
 
         /**
-         * 🟢 MÓDULO LÓGICO: ABRE-CHATS CORPORATIVO DIRECTO
+         * 🟢 ABRE-CHATS CORPORATIVO DIRECTO
          */
         const waInput = document.getElementById('waInput');
         waInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                // Eliminar todo lo que no sea número del input
                 let number = this.value.trim().replace(/\D/g, ''); 
                 if (number === '') return;
-                
-                // UX Inteligente: Si el número tiene 9 dígitos exactos y empieza con 9, asume formato Perú y agrega código +51
-                if (number.length === 9 && number.startsWith('9')) {
-                    number = '51' + number;
-                }
-                
-                // Abrir la API de WhatsApp Web en una nueva pestaña
+                if (number.length === 9 && number.startsWith('9')) number = '51' + number;
                 window.open(`https://wa.me/${number}`, '_blank');
-                
-                // Limpiar el campo automáticamente para el siguiente cliente
                 this.value = '';
             }
         });
 
         /**
-         * MÓDULO MODO OSCURO
+         * MODO OSCURO
          */
         const themeBtn = document.getElementById('themeBtn');
         if (localStorage.getItem('alito_theme') === 'dark') {
@@ -338,7 +347,7 @@
         });
 
         /**
-         * MÓDULO BLOC DE NOTAS CON HERRAMIENTAS
+         * BLOC DE NOTAS CON HERRAMIENTAS
          */
         const scratchpad = document.getElementById('scratchpad');
         const charCounter = document.getElementById('char-counter');
@@ -430,13 +439,22 @@
                     copyItem.className = 'copy-item';
                     copyItem.customTextToCopy = btn.texto; 
 
+                    // 🌐 LÓGICA DEL DETECTOR DE ENLACES
+                    const isLink = btn.texto.trim().startsWith('http://') || btn.texto.trim().startsWith('https://');
+                    const linkIcon = isLink ? `<span class="open-link-btn" title="Abrir pestaña" onclick="openSmartLink(event, '${btn.texto.trim()}')">🌐</span>` : '';
+
                     copyItem.innerHTML = `
                         <span class="item-tag">
                             <span>${btn.etiqueta}</span>
-                            <span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span>
+                            <span class="action-wrap">
+                                ${linkIcon}
+                                <span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span>
+                            </span>
                         </span>
                         <span class="item-preview">${btn.texto}</span>
                     `;
+                    
+                    // Al darle clic al botón (fuera del mundito), se copia normal
                     copyItem.addEventListener('click', function() { copyText(this.customTextToCopy, this); });
                     gridButtons.appendChild(copyItem);
                 });
@@ -444,6 +462,14 @@
                 card.appendChild(gridButtons);
                 dashboard.appendChild(card);
             });
+        }
+
+        /**
+         * 🌐 FUNCIÓN PARA ABRIR EL ENLACE Y BLOQUEAR EL COPIADO
+         */
+        window.openSmartLink = function(event, url) {
+            event.stopPropagation(); // Bloquea el evento de clic de la tarjeta padre
+            window.open(url, '_blank');
         }
 
         /**
