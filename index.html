@@ -3,56 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Sitio de la mejor administradora Alito</title>
+    <title>🌸 Sitio de la mejor administradora Alito</title>
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         :root {
-            --bg-main: #fffdfd;
-            --card-clara: #ffffff;
-            --card-oscura: #fff2f5;
-            --text-title: #4a0e2e;
-            --text-body: #4a3b43;
-            --text-muted: #9c8290;
-            --border: #fce4ec;
-            --accent: #f8bbd0;
-            --radius-lg: 20px;
-            --radius-md: 12px;
-            --shadow-sm: 0 4px 12px rgba(244, 143, 177, 0.12);
-            --shadow-md: 0 16px 35px -10px rgba(244, 143, 177, 0.25);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-main: #fbf8f9;         /* Fondo neutral rosado de alta gama */
+            --card-white: #ffffff;      /* Blanco lino puro */
+            --card-blush: #fff5f7;      /* Rosa pastel lavado para efecto ajedrez */
+            --border-soft: #f9e6eb;     /* Bordes invisibles pero precisos */
+            --text-title: #3d0c24;      /* Letra recta, fuerte y sobria para encabezados */
+            --text-body: #42363c;       /* Letra limpia para lectura de datos */
+            --text-tag: #9c828e;        /* Tono técnico para micro-etiquetas */
+            --accent-pink: #f48fb1;     /* Rosa de enfoque */
+            --success-bg: #e8f5e9;      /* Verde menta pastel para copiado */
+            --success-text: #1b5e20;
+            
+            /* Tipografías de precisión tipográfica (Estilo Apple/Google) */
+            --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --radius-premium: 18px;
+            --radius-tile: 12px;
+            --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--font-display);
             background-color: var(--bg-main);
             color: var(--text-body);
             margin: 0;
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; flex: 1; width: 100%; }
+        .container { max-width: 1280px; margin: 0 auto; flex: 1; width: 100%; }
 
+        /* HEADER CON JERARQUÍA RECTA Y LIMPIA */
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
+            margin-bottom: 35px;
+            padding: 35px 24px;
             background: #ffffff;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
+            border-radius: var(--radius-premium);
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 4px 20px rgba(61, 12, 36, 0.02);
         }
 
         .brand h1 { 
-            font-size: 1.85rem; 
+            font-size: 2.1rem; 
             font-weight: 800; 
             margin: 0; 
             color: var(--text-title);
-            letter-spacing: -0.03em;
+            letter-spacing: -0.03em; /* Letras compactas y elegantes */
         }
-        .brand p { font-size: 0.9rem; color: var(--text-muted); margin: 8px 0 0 0; font-style: italic; }
+        .brand p { font-size: 0.95rem; color: var(--text-tag); margin: 8px 0 0 0; font-weight: 400; }
 
         .controls { 
             display: flex; 
@@ -60,151 +65,167 @@
             align-items: center;
             justify-content: center; 
             margin-top: 25px; 
-            gap: 15px; 
+            gap: 12px; 
             width: 100%; 
         }
-
         @media (min-width: 768px) { .controls { flex-direction: row; } }
 
         .search-input {
             width: 100%; 
-            max-width: 400px; 
+            max-width: 420px; 
             background-color: #ffffff;
-            border: 1px solid var(--border); 
-            border-radius: var(--radius-md);
-            padding: 14px 20px; 
+            border: 1px solid var(--border-soft); 
+            border-radius: var(--radius-tile);
+            padding: 14px 18px; 
             font-size: 0.95rem; 
-            transition: var(--transition);
+            color: var(--text-body);
+            transition: var(--transition-smooth);
             box-sizing: border-box;
         }
         .search-input:focus { 
             outline: none; 
-            border-color: var(--accent); 
-            box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.2); 
+            border-color: var(--accent-pink); 
+            box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.15); 
         }
 
         .sheets-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: #fff2f5;
+            background-color: var(--card-blush);
             color: #ad1457;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
-            padding: 14px 24px;
-            border-radius: var(--radius-md);
-            border: 1px solid #f8bbd0;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            padding: 14px 22px;
+            border-radius: var(--radius-tile);
+            border: 1px solid var(--border-soft);
+            transition: var(--transition-smooth);
             white-space: nowrap;
         }
         .sheets-btn:hover {
-            background-color: #f8bbd0;
+            background-color: #ad1457;
             color: #ffffff;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .status-badge {
-            display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
-            font-weight: 700; padding: 8px 16px; border-radius: 30px; 
-            background: #fff2f5; color: #ad1457; text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem;
+            font-weight: 700; padding: 6px 14px; border-radius: 30px; 
+            background: var(--card-blush); color: #ad1457; letter-spacing: 0.03em;
         }
 
+        /* DASHBOARD GRID: "ALIGN-ITEMS: START" EVITA EL DESFASE DE ALTURAS */
         #dashboard { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
-            gap: 25px; 
-            padding-bottom: 50px;
+            gap: 28px; 
+            padding-bottom: 60px;
+            align-items: start; 
         }
 
+        /* 👑 EFECTO AJEDREZ PREMIUM (INTERCALADO DE COLORES COMO TABLERO) */
         .card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg); 
-            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-premium); 
             padding: 24px; 
-            transition: var(--transition);
+            transition: var(--transition-smooth);
             display: flex;
             flex-direction: column;
-            height: fit-content; /* Evita desfases de tamaño entre tarjetas */
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(61, 12, 36, 0.01);
+        }
+        .card:nth-child(odd) { background-color: var(--card-white); }
+        .card:nth-child(even) { background-color: var(--card-blush); }
+        .card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 24px rgba(244, 143, 177, 0.15); 
         }
         
-        .card:nth-child(odd) { background-color: var(--card-clara); }
-        .card:nth-child(even) { background-color: var(--card-oscura); }
-        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        
+        /* JERARQUÍA MEDIA: TÍTULO DE TARJETA RECTO Y PRECISO */
         .card-title {
-            font-size: 1.25rem; 
+            font-size: 1.3rem; 
             font-weight: 700; 
-            margin: 0 0 18px 0;
+            margin: 0 0 16px 0;
             color: var(--text-title); 
-            letter-spacing: -0.01em;
-            border-bottom: 2px dashed rgba(136, 14, 79, 0.1); 
-            padding-bottom: 10px;
+            letter-spacing: -0.02em;
+            border-bottom: 2px solid rgba(61, 12, 36, 0.04); 
+            padding-bottom: 12px;
         }
 
-        /* FLEXBOX INTELIGENTE EN LUGAR DE REJILLA RÍGIDA */
         .grid-buttons { 
             display: flex;
             flex-direction: column;
-            gap: 12px; 
+            gap: 10px; 
         }
 
-        /* BOTÓN ANTI-DESBORDAMIENTO (MÁXIMA CALIDAD UX) */
+        /* 🛡️ CONTENEDOR ANTI-DESBORDE Y ANTI-ROTURA DE TEXTO (MAX UX) */
         .copy-item {
             display: flex; 
             flex-direction: column;
-            justify-content: center;
             background-color: #ffffff; 
-            border: 1px solid rgba(252, 228, 236, 0.6);
-            border-radius: var(--radius-md); 
-            padding: 14px; 
+            border: 1px solid rgba(249, 230, 235, 0.7);
+            border-radius: var(--radius-tile); 
+            padding: 12px 14px; 
             cursor: pointer; 
-            transition: var(--transition);
+            transition: var(--transition-smooth);
             box-sizing: border-box;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
             width: 100%;
-            word-wrap: break-word; /* Rompe el texto si es ultra largo */
-            word-break: break-word;
+            min-width: 0; /* Obliga a los textos hijos a respetar el contenedor */
+            position: relative;
+        }
+        .card:nth-child(even) .copy-item {
+            border-color: rgba(255, 255, 255, 0.8);
         }
         .copy-item:hover { 
-            border-color: var(--accent); 
-            box-shadow: 0 4px 10px rgba(244, 143, 177, 0.15);
+            border-color: var(--accent-pink); 
+            transform: translateX(2px);
         }
         
+        /* JERARQUÍA BAJA: MICRO-TEXTOS ALTAMENTE CONTROLADOS */
         .item-tag { 
             font-size: 0.65rem; 
             font-weight: 700; 
-            color: var(--text-muted); 
+            color: var(--text-tag); 
             text-transform: uppercase; 
-            letter-spacing: 0.04em;
-            margin-bottom: 6px;
+            letter-spacing: 0.06em;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
         }
         
-        /* Permite que textos largos de WhatsApp respiren y bajen de renglón sin salirse */
+        /* CAJA DE TEXTO INTELIGENTE: PÁRRAFOS RESPIRAN, TEXTOS CORTOS QUEDAN RECTOS */
         .item-preview { 
-            font-size: 0.85rem; 
+            font-size: 0.88rem; 
             color: var(--text-body); 
             font-weight: 500; 
             line-height: 1.4;
             display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-height: 100px; /* Evita que una sola tarjeta se trague toda la pantalla */
+            white-space: pre-wrap;       /* Respeta saltos de línea del Excel si los hay */
+            word-wrap: break-word;       /* Rompe palabras largas (enlaces o códigos) sin ensanchar el botón */
+            word-break: break-word;      /* Doble blindaje anti-desborde */
+            max-height: 90px;            /* Si mete una carta de amor entera, genera scroll interno propio */
+            overflow-y: auto;
+            padding-right: 4px;
         }
+        /* Scrollbar interna tierno y diminuto para textos masivos */
+        .item-preview::-webkit-scrollbar { width: 3px; }
+        .item-preview::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 10px; }
 
-        .copy-item.success { background-color: #f4fbf6; border-color: #81c784; }
-        .copy-item.success .item-preview { color: #1b5e20; }
-        .copy-item.success .item-tag { color: #2e7d32; font-weight: 800; }
+        /* MICRO-INTERACCIÓN DE ÉXITO */
+        .copy-item.success { background-color: var(--success-bg); border-color: #81c784; }
+        .copy-item.success .item-preview { color: var(--success-text); }
+        .copy-item.success .item-tag { color: var(--success-text); }
 
+        /* PIE DE PÁGINA TRANSPARENTOSO CON TIPOGRAFÍA DELICADA */
         footer {
             text-align: center;
-            padding: 30px;
-            font-size: 0.8rem;
+            padding: 40px 24px;
+            font-size: 0.85rem;
             color: var(--text-title);
-            opacity: 0.4;
-            letter-spacing: 0.05em;
-            font-style: italic;
+            opacity: 0.35;
+            letter-spacing: 0.04em;
+            font-weight: 500;
         }
 
         .hidden { display: none !important; }
@@ -215,12 +236,12 @@
     <div class="container">
         <header>
             <div class="brand">
-                <h1> Sitio de la mejor administradora Alito</h1>
-                <p>Tu rincón de trabajo organizado con todo el amor del mundo</p>
+                <h1>🌸 Sitio de la mejor administradora Alito</h1>
+                <p>Tu ecosistema de control corporativo diseñado a medida</p>
             </div>
-            <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando...</div>
+            <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando sistema...</div>
             <div class="controls">
-                <input type="text" id="searchBar" class="search-input" placeholder="🌸 Buscar por nombre o cualquier dato..." oninput="filterDashboard()">
+                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Buscar entidad, ruc, plantilla..." oninput="filterDashboard()">
                 <a href="https://docs.google.com/spreadsheets/d/1pLfFr3mM8BI6wtjwGgwp4fMjl3bCtIjZP2iTd3wZ9Do/edit?usp=sharing" target="_blank" class="sheets-btn">
                     📊 Editar Base de Datos
                 </a>
@@ -232,11 +253,11 @@
                 <h2 class="card-title">Notas de Amor ✨</h2>
                 <div class="grid-buttons">
                     <div class="copy-item" onclick="copyText('Lo haces bien, mi rabanito ❤️', this)">
-                        <span class="item-tag">Ánimo</span>
+                        <span class="item-tag">Motivación</span>
                         <span class="item-preview">Lo haces bien, mi rabanito ❤️</span>
                     </div>
                     <div class="copy-item" onclick="copyText('Eres la administradora más increíble del mundo 🌸', this)">
-                        <span class="item-tag">Te amo</span>
+                        <span class="item-tag">Dedicatoria</span>
                         <span class="item-preview">Eres la administradora más increíble del mundo 🌸</span>
                     </div>
                 </div>
@@ -262,8 +283,7 @@
                     try {
                         masterData = JSON.parse(xhr.responseText);
                         renderDashboard(masterData);
-                        statusBadge.innerHTML = "✨ En Línea para Alito";
-                        statusBadge.className = "status-badge";
+                        statusBadge.innerHTML = "🟢 Conexión Segura e Inteligente";
                         statusBadge.style.background = "#e8f5e9";
                         statusBadge.style.color = "#2e7d32";
                     } catch (e) { showErrorUI(); }
@@ -289,7 +309,7 @@
                 item.botones.forEach(btn => {
                     htmlContent += `
                         <div class="copy-item" onclick="copyText('${btn.texto.replace(/'/g, "\\'")}', this)">
-                            <span class="item-tag">${btn.etiqueta}</span>
+                            <span class="item-tag"><span>${btn.etiqueta}</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
                             <span class="item-preview">${btn.texto}</span>
                         </div>`;
                 });
@@ -315,18 +335,26 @@
         }
 
         function triggerSuccess(element) {
-            const tag = element.querySelector('.item-tag');
-            const originalTag = tag.innerText;
+            const tagSpan = element.querySelector('.item-tag span');
+            const indicator = element.querySelector('.copy-indicator');
+            const originalTag = tagSpan.innerText;
+            
             element.classList.add('success');
-            tag.innerText = '✨ COPIADO';
+            tagSpan.innerText = '✨ ¡COPIADO CON ÉXITO!';
+            if(indicator) indicator.style.display = 'none';
+
             setTimeout(() => {
                 element.classList.remove('success');
-                tag.innerText = originalTag;
+                tagSpan.innerText = originalTag;
+                if(indicator) indicator.style.display = 'inline';
             }, 1000);
         }
 
         function showErrorUI() {
-            document.getElementById('networkStatus').innerHTML = "💝 Error de sincronización";
+            const statusBadge = document.getElementById('networkStatus');
+            statusBadge.innerHTML = "🔴 Error de sincronización de la base";
+            statusBadge.style.background = "#fee2e2";
+            statusBadge.style.color = "#991b1b";
         }
 
         function filterDashboard() {
