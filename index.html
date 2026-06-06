@@ -7,12 +7,12 @@
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         :root {
-            --bg-main: #fbf8f9;         /* Fondo neutral limpio */
-            --card-white: #ffffff;      /* Blanco puro */
+            --bg-main: #fbf8f9;         /* Fondo neutral limpio de alta gama */
+            --card-white: #ffffff;      /* Blanco lino puro */
             --card-blush: #fff5f7;      /* Rosa pastel lavado para efecto ajedrez */
-            --border-soft: #f9e6eb;     /* Líneas de división finas */
+            --border-soft: #f9e6eb;     /* Líneas finas de separación */
             --text-title: #3d0c24;      /* Letra recta, fuerte y sobria para encabezados */
-            --text-body: #42363c;       /* Letra limpia para lectura rápida */
+            --text-body: #42363c;       /* Letra limpia para lectura rápida de datos */
             --text-tag: #9c828e;        /* Micro-etiquetas técnicas */
             --accent-pink: #f48fb1;     /* Rosa de enfoque */
             --success-bg: #e8f5e9;      /* Verde menta para copiado exitoso */
@@ -38,7 +38,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; flex: 1; width: 100%; }
 
-        /* HEADER PREMIUM UX */
+        /* HEADER PREMIUM CON JERARQUÍA RECTA */
         header {
             text-align: center;
             margin-bottom: 35px;
@@ -54,7 +54,7 @@
             font-weight: 800; 
             margin: 0; 
             color: var(--text-title);
-            letter-spacing: -0.03em; /* Estilo tipográfico recto y compacto */
+            letter-spacing: -0.03em;
         }
         .brand p { font-size: 0.95rem; color: var(--text-tag); margin: 8px 0 0 0; }
 
@@ -113,16 +113,16 @@
             background: var(--card-blush); color: #ad1457;
         }
 
-        /* TABLERO PRINCIPAL CON ALINEACIÓN INTELIGENTE */
+        /* CONFIGURACIÓN ASÍNCRONA DE TARJETAS DE AJEDREZ */
         #dashboard { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
             gap: 25px; 
             padding-bottom: 60px;
-            align-items: start; /* Evita que las tarjetas se estiren feo hacia abajo */
+            align-items: start; /* Evita que las tarjetas vecinas se estiren de forma desigual */
         }
 
-        /* 👑 EFECTO AJEDREZ PREMIUM (INTERCALADO MATEMÁTICO DE COLORES) */
+        /* 👑 EFECTO AJEDREZ MATEMÁTICO (RITMO VISUAL DE COLORES INTERCALADOS) */
         .card {
             border: 1px solid var(--border-soft);
             border-radius: var(--radius-premium); 
@@ -141,7 +141,6 @@
             box-shadow: 0 12px 24px rgba(244, 143, 177, 0.12); 
         }
         
-        /* CATEGORÍAS RECTAS Y PRECISAS */
         .card-title {
             font-size: 1.25rem; 
             font-weight: 700; 
@@ -159,7 +158,7 @@
             gap: 10px; 
         }
 
-        /* 🛡️ BOTÓN INDESTRUCTIBLE CON FORMATO SEGURO ANTI-DESBORDE */
+        /* DISEÑO DE BOTÓN DE UN SÓLO CLIC AUTOMÁTICO (TRUE UX/UI) */
         .copy-item {
             display: flex; 
             flex-direction: column;
@@ -174,13 +173,11 @@
             overflow: hidden;
         }
         .card:nth-child(even) .copy-item { border-color: rgba(255, 255, 255, 0.9); }
-        
         .copy-item:hover { 
             border-color: var(--accent-pink); 
             transform: translateX(2px);
         }
         
-        /* CONTENEDOR DE TEXTO FIJO */
         .item-tag { 
             font-size: 0.65rem; 
             font-weight: 700; 
@@ -193,19 +190,17 @@
             width: 100%;
         }
         
-        /* PREVIEW LIMPIO: SI EL TEXTO ES LARGO SE DETIENEN LOS BORDES CON PUNTITOS (...) */
         .item-preview { 
             font-size: 0.88rem; 
             color: var(--text-body); 
             font-weight: 600; 
             white-space: nowrap;       
             overflow: hidden;          
-            text-overflow: ellipsis;   /* Blindaje total: el texto nunca se sale del botón */
+            text-overflow: ellipsis; /* Puntos suspensivos estéticos si el texto es masivo */
             display: block;
             width: 100%;
         }
 
-        /* INTERACCIÓN AUTOMÁTICA DE ÉXITO AL COPIAR */
         .copy-item.success { background-color: var(--success-bg); border-color: #81c784; }
         .copy-item.success .item-preview { color: var(--success-text); }
         .copy-item.success .item-tag { color: var(--success-text); }
@@ -234,7 +229,7 @@
             </div>
             <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando sistema...</div>
             <div class="controls">
-                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Buscar entidad, ruc, plantilla..." oninput="filterDashboard()">
+                <input type="text" id="searchBar" class="search-input" placeholder="🔍 Buscar por tarjeta, etiqueta o contenido..." oninput="filterDashboard()">
                 <a href="https://docs.google.com/spreadsheets/d/1pLfFr3mM8BI6wtjwGgwp4fMjl3bCtIjZP2iTd3wZ9Do/edit?usp=sharing" target="_blank" class="sheets-btn">
                     📊 Editar Base de Datos
                 </a>
@@ -245,11 +240,11 @@
             <section class="card" data-category="notas de amor ✨">
                 <h2 class="card-title">Notas de Amor ✨</h2>
                 <div class="grid-buttons">
-                    <div class="copy-item" onclick="copyText('Lo haces bien, mi rabanito ❤️', this)">
+                    <div class="copy-item" id="nota1">
                         <span class="item-tag"><span>Motivación</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
                         <span class="item-preview">Lo haces bien, mi rabanito ❤️</span>
                     </div>
-                    <div class="copy-item" onclick="copyText('Eres la administradora más increíble del mundo 🌸', this)">
+                    <div class="copy-item" id="nota2">
                         <span class="item-tag"><span>Dedicatoria</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
                         <span class="item-preview">Eres la administradora más increíble del mundo 🌸</span>
                     </div>
@@ -263,10 +258,16 @@
     </footer>
 
     <script>
-        // TU ENLACE ACTUALIZADO Y CONFIGURADO
+        // TU ENLACE OFICIAL INYECTADO A LA PERFECCIÓN
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
 
         let masterData = [];
+
+        // Inicializar las notas fijas con el nuevo sistema seguro
+        document.getElementById('nota1').customTextToCopy = "Lo haces bien, mi rabanito ❤️";
+        document.getElementById('nota1').addEventListener('click', function() { copyText(this.customTextToCopy, this); });
+        document.getElementById('nota2').customTextToCopy = "Eres la administradora más increíble del mundo 🌸";
+        document.getElementById('nota2').addEventListener('click', function() { copyText(this.customTextToCopy, this); });
 
         function fetchCloudData() {
             const statusBadge = document.getElementById('networkStatus');
@@ -298,23 +299,42 @@
                 card.className = 'card';
                 card.setAttribute('data-category', item.tituloTarjeta.toLowerCase());
 
-                let htmlContent = `<h2 class="card-title">${item.tituloTarjeta}</h2><div class="grid-buttons">`;
+                const title = document.createElement('h2');
+                title.className = 'card-title';
+                title.innerText = item.tituloTarjeta;
+                card.appendChild(title);
+
+                const gridButtons = document.createElement('div');
+                gridButtons.className = 'grid-buttons';
 
                 item.botones.forEach(btn => {
-                    htmlContent += `
-                        <div class="copy-item" onclick="copyText('${btn.texto.replace(/'/g, "\\'")}', this)">
-                            <span class="item-tag"><span>${btn.etiqueta}</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
-                            <span class="item-preview">${btn.texto}</span>
-                        </div>`;
+                    const copyItem = document.createElement('div');
+                    copyItem.className = 'copy-item';
+                    
+                    // SEGURIDAD UX: Almacenamos el texto crudo en la memoria del elemento para que NADA lo rompa
+                    copyItem.customTextToCopy = btn.texto; 
+
+                    copyItem.innerHTML = `
+                        <span class="item-tag">
+                            <span>${btn.etiqueta}</span>
+                            <span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span>
+                        </span>
+                        <span class="item-preview">${btn.texto}</span>
+                    `;
+
+                    // Disparador automático silencioso de un solo clic
+                    copyItem.addEventListener('click', function() {
+                        copyText(this.customTextToCopy, this);
+                    });
+
+                    gridButtons.appendChild(copyItem);
                 });
 
-                htmlContent += `</div>`;
-                card.innerHTML = htmlContent;
+                card.appendChild(gridButtons);
                 dashboard.appendChild(card);
             });
         }
 
-        // 🚀 ALGORITMO FANTASMA ULTRA RÁPIDO Y 100% AUTOMÁTICO (TRUE UX/UI)
         function copyText(text, element) {
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(text)
@@ -325,7 +345,6 @@
             }
         }
 
-        // COPIADO DE RESPALDO ULTRA OCULTO (NUNCA CREA CUADROS ABAJO)
         function fallbackStealthCopy(text, element) {
             const textArea = document.createElement("textarea");
             textArea.value = text;
