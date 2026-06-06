@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 Sitio de la mejor administradora Alito</title>
+    <title> Sitio de la mejor administradora Alito</title>
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         :root {
-            --bg-main: #fffdfd; /* Fondo limpio y luminoso */
-            --card-clara: #ffffff; /* Blanco lino puro */
-            --card-oscura: #fff2f5; /* Rosa sutil para el efecto tablero */
-            --text-title: #4a0e2e; /* Color vino oscuro, fuerte y recto para categorías */
-            --text-body: #4a3b43; /* Tono neutro oscuro para los datos */
-            --text-muted: #9c8290; /* Tono pastel bajo para etiquetas */
+            --bg-main: #fffdfd;
+            --card-clara: #ffffff;
+            --card-oscura: #fff2f5;
+            --text-title: #4a0e2e;
+            --text-body: #4a3b43;
+            --text-muted: #9c8290;
             --border: #fce4ec;
             --accent: #f8bbd0;
             --radius-lg: 20px;
@@ -23,7 +23,6 @@
         }
 
         body {
-            /* Tipografía del sistema: Limpia, recta, precisa y ultra moderna */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-main);
             color: var(--text-body);
@@ -46,7 +45,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Jerarquía Máxima: Título principal de la app */
         .brand h1 { 
             font-size: 1.85rem; 
             font-weight: 800; 
@@ -76,7 +74,6 @@
             border-radius: var(--radius-md);
             padding: 14px 20px; 
             font-size: 0.95rem; 
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
             transition: var(--transition);
             box-sizing: border-box;
         }
@@ -121,7 +118,6 @@
             padding-bottom: 50px;
         }
 
-        /* 👑 EFECTO AJEDREZ INTERCALADO CON NTH-CHILD */
         .card {
             border: 1px solid var(--border);
             border-radius: var(--radius-lg); 
@@ -130,15 +126,13 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            height: fit-content; /* Evita desfases de tamaño entre tarjetas */
         }
-        /* Tarjetas Impares: Blancas */
+        
         .card:nth-child(odd) { background-color: var(--card-clara); }
-        /* Tarjetas Pares: Sutilmente Rosadas */
         .card:nth-child(even) { background-color: var(--card-oscura); }
-
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         
-        /* Jerarquía Media: Título de Categoría Recto, Firme y Elegante */
         .card-title {
             font-size: 1.25rem; 
             font-weight: 700; 
@@ -147,18 +141,16 @@
             letter-spacing: -0.01em;
             border-bottom: 2px dashed rgba(136, 14, 79, 0.1); 
             padding-bottom: 10px;
-            text-transform: capitalize;
         }
 
+        /* FLEXBOX INTELIGENTE EN LUGAR DE REJILLA RÍGIDA */
         .grid-buttons { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
+            display: flex;
+            flex-direction: column;
+            gap: 12px; 
         }
 
-        .grid-buttons .copy-item:only-child { grid-column: span 2; }
-
-        /* Jerarquía Baja: Elementos de Copiado Sutiles, Limpios y Ergonómicos */
+        /* BOTÓN ANTI-DESBORDAMIENTO (MÁXIMA CALIDAD UX) */
         .copy-item {
             display: flex; 
             flex-direction: column;
@@ -166,38 +158,41 @@
             background-color: #ffffff; 
             border: 1px solid rgba(252, 228, 236, 0.6);
             border-radius: var(--radius-md); 
-            padding: 12px; 
+            padding: 14px; 
             cursor: pointer; 
             transition: var(--transition);
             box-sizing: border-box;
             box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+            width: 100%;
+            word-wrap: break-word; /* Rompe el texto si es ultra largo */
+            word-break: break-word;
         }
         .copy-item:hover { 
-            background-color: #ffffff;
             border-color: var(--accent); 
             box-shadow: 0 4px 10px rgba(244, 143, 177, 0.15);
         }
         
-        /* Texto ultra-específico de la etiqueta */
         .item-tag { 
             font-size: 0.65rem; 
             font-weight: 700; 
             color: var(--text-muted); 
             text-transform: uppercase; 
             letter-spacing: 0.04em;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
-        /* El texto real que se copiará */
+        
+        /* Permite que textos largos de WhatsApp respiren y bajen de renglón sin salirse */
         .item-preview { 
             font-size: 0.85rem; 
             color: var(--text-body); 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
             font-weight: 500; 
+            line-height: 1.4;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 100px; /* Evita que una sola tarjeta se trague toda la pantalla */
         }
 
-        /* Feedback visual limpio al copiar con éxito */
         .copy-item.success { background-color: #f4fbf6; border-color: #81c784; }
         .copy-item.success .item-preview { color: #1b5e20; }
         .copy-item.success .item-tag { color: #2e7d32; font-weight: 800; }
@@ -220,7 +215,7 @@
     <div class="container">
         <header>
             <div class="brand">
-                <h1>🌸 Sitio de la mejor administradora Alito</h1>
+                <h1> Sitio de la mejor administradora Alito</h1>
                 <p>Tu rincón de trabajo organizado con todo el amor del mundo</p>
             </div>
             <div id="networkStatus" class="status-badge" style="margin-top: 15px;">⏳ Sincronizando...</div>
@@ -242,7 +237,7 @@
                     </div>
                     <div class="copy-item" onclick="copyText('Eres la administradora más increíble del mundo 🌸', this)">
                         <span class="item-tag">Te amo</span>
-                        <span class="item-preview">Eres la administradora más increíble...</span>
+                        <span class="item-preview">Eres la administradora más increíble del mundo 🌸</span>
                     </div>
                 </div>
             </section>
