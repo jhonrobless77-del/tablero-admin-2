@@ -7,18 +7,17 @@
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=100&auto=format&fit=crop&q=80">
     <style>
         :root {
-            --bg-main: #fbf8f9;         /* Fondo neutral rosado de alta gama */
-            --card-white: #ffffff;      /* Blanco lino puro */
+            --bg-main: #fbf8f9;         /* Fondo neutral limpio */
+            --card-white: #ffffff;      /* Blanco puro */
             --card-blush: #fff5f7;      /* Rosa pastel lavado para efecto ajedrez */
-            --border-soft: #f9e6eb;     /* Bordes invisibles pero precisos */
+            --border-soft: #f9e6eb;     /* Líneas de división finas */
             --text-title: #3d0c24;      /* Letra recta, fuerte y sobria para encabezados */
-            --text-body: #42363c;       /* Letra limpia para lectura de datos */
-            --text-tag: #9c828e;        /* Tono técnico para micro-etiquetas */
+            --text-body: #42363c;       /* Letra limpia para lectura rápida */
+            --text-tag: #9c828e;        /* Micro-etiquetas técnicas */
             --accent-pink: #f48fb1;     /* Rosa de enfoque */
-            --success-bg: #e8f5e9;      /* Verde menta pastel para copiado */
+            --success-bg: #e8f5e9;      /* Verde menta para copiado exitoso */
             --success-text: #1b5e20;
             
-            /* Tipografías de precisión tipográfica (Estilo Apple/Google) */
             --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --radius-premium: 18px;
             --radius-tile: 12px;
@@ -37,9 +36,9 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1280px; margin: 0 auto; flex: 1; width: 100%; }
+        .container { max-width: 1200px; margin: 0 auto; flex: 1; width: 100%; }
 
-        /* HEADER CON JERARQUÍA RECTA Y LIMPIA */
+        /* HEADER PREMIUM UX */
         header {
             text-align: center;
             margin-bottom: 35px;
@@ -51,13 +50,13 @@
         }
 
         .brand h1 { 
-            font-size: 2.1rem; 
+            font-size: 2rem; 
             font-weight: 800; 
             margin: 0; 
             color: var(--text-title);
-            letter-spacing: -0.03em; /* Letras compactas y elegantes */
+            letter-spacing: -0.03em; /* Estilo tipográfico recto y compacto */
         }
-        .brand p { font-size: 0.95rem; color: var(--text-tag); margin: 8px 0 0 0; font-weight: 400; }
+        .brand p { font-size: 0.95rem; color: var(--text-tag); margin: 8px 0 0 0; }
 
         .controls { 
             display: flex; 
@@ -106,25 +105,24 @@
         .sheets-btn:hover {
             background-color: #ad1457;
             color: #ffffff;
-            transform: translateY(-1px);
         }
 
         .status-badge {
             display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem;
             font-weight: 700; padding: 6px 14px; border-radius: 30px; 
-            background: var(--card-blush); color: #ad1457; letter-spacing: 0.03em;
+            background: var(--card-blush); color: #ad1457;
         }
 
-        /* DASHBOARD GRID: "ALIGN-ITEMS: START" EVITA EL DESFASE DE ALTURAS */
+        /* TABLERO PRINCIPAL CON ALINEACIÓN INTELIGENTE */
         #dashboard { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
-            gap: 28px; 
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            gap: 25px; 
             padding-bottom: 60px;
-            align-items: start; 
+            align-items: start; /* Evita que las tarjetas se estiren feo hacia abajo */
         }
 
-        /* 👑 EFECTO AJEDREZ PREMIUM (INTERCALADO DE COLORES COMO TABLERO) */
+        /* 👑 EFECTO AJEDREZ PREMIUM (INTERCALADO MATEMÁTICO DE COLORES) */
         .card {
             border: 1px solid var(--border-soft);
             border-radius: var(--radius-premium); 
@@ -137,20 +135,22 @@
         }
         .card:nth-child(odd) { background-color: var(--card-white); }
         .card:nth-child(even) { background-color: var(--card-blush); }
+        
         .card:hover { 
             transform: translateY(-4px); 
-            box-shadow: 0 12px 24px rgba(244, 143, 177, 0.15); 
+            box-shadow: 0 12px 24px rgba(244, 143, 177, 0.12); 
         }
         
-        /* JERARQUÍA MEDIA: TÍTULO DE TARJETA RECTO Y PRECISO */
+        /* CATEGORÍAS RECTAS Y PRECISAS */
         .card-title {
-            font-size: 1.3rem; 
+            font-size: 1.25rem; 
             font-weight: 700; 
             margin: 0 0 16px 0;
             color: var(--text-title); 
             letter-spacing: -0.02em;
             border-bottom: 2px solid rgba(61, 12, 36, 0.04); 
             padding-bottom: 12px;
+            text-transform: capitalize;
         }
 
         .grid-buttons { 
@@ -159,30 +159,28 @@
             gap: 10px; 
         }
 
-        /* 🛡️ CONTENEDOR ANTI-DESBORDE Y ANTI-ROTURA DE TEXTO (MAX UX) */
+        /* 🛡️ BOTÓN INDESTRUCTIBLE CON FORMATO SEGURO ANTI-DESBORDE */
         .copy-item {
             display: flex; 
             flex-direction: column;
             background-color: #ffffff; 
-            border: 1px solid rgba(249, 230, 235, 0.7);
+            border: 1px solid rgba(249, 230, 235, 0.8);
             border-radius: var(--radius-tile); 
             padding: 12px 14px; 
             cursor: pointer; 
             transition: var(--transition-smooth);
             box-sizing: border-box;
             width: 100%;
-            min-width: 0; /* Obliga a los textos hijos a respetar el contenedor */
-            position: relative;
+            overflow: hidden;
         }
-        .card:nth-child(even) .copy-item {
-            border-color: rgba(255, 255, 255, 0.8);
-        }
+        .card:nth-child(even) .copy-item { border-color: rgba(255, 255, 255, 0.9); }
+        
         .copy-item:hover { 
             border-color: var(--accent-pink); 
             transform: translateX(2px);
         }
         
-        /* JERARQUÍA BAJA: MICRO-TEXTOS ALTAMENTE CONTROLADOS */
+        /* CONTENEDOR DE TEXTO FIJO */
         .item-tag { 
             font-size: 0.65rem; 
             font-weight: 700; 
@@ -192,32 +190,26 @@
             margin-bottom: 5px;
             display: flex;
             justify-content: space-between;
+            width: 100%;
         }
         
-        /* CAJA DE TEXTO INTELIGENTE: PÁRRAFOS RESPIRAN, TEXTOS CORTOS QUEDAN RECTOS */
+        /* PREVIEW LIMPIO: SI EL TEXTO ES LARGO SE DETIENEN LOS BORDES CON PUNTITOS (...) */
         .item-preview { 
             font-size: 0.88rem; 
             color: var(--text-body); 
-            font-weight: 500; 
-            line-height: 1.4;
+            font-weight: 600; 
+            white-space: nowrap;       
+            overflow: hidden;          
+            text-overflow: ellipsis;   /* Blindaje total: el texto nunca se sale del botón */
             display: block;
-            white-space: pre-wrap;       /* Respeta saltos de línea del Excel si los hay */
-            word-wrap: break-word;       /* Rompe palabras largas (enlaces o códigos) sin ensanchar el botón */
-            word-break: break-word;      /* Doble blindaje anti-desborde */
-            max-height: 90px;            /* Si mete una carta de amor entera, genera scroll interno propio */
-            overflow-y: auto;
-            padding-right: 4px;
+            width: 100%;
         }
-        /* Scrollbar interna tierno y diminuto para textos masivos */
-        .item-preview::-webkit-scrollbar { width: 3px; }
-        .item-preview::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 10px; }
 
-        /* MICRO-INTERACCIÓN DE ÉXITO */
+        /* INTERACCIÓN AUTOMÁTICA DE ÉXITO AL COPIAR */
         .copy-item.success { background-color: var(--success-bg); border-color: #81c784; }
         .copy-item.success .item-preview { color: var(--success-text); }
         .copy-item.success .item-tag { color: var(--success-text); }
 
-        /* PIE DE PÁGINA TRANSPARENTOSO CON TIPOGRAFÍA DELICADA */
         footer {
             text-align: center;
             padding: 40px 24px;
@@ -226,6 +218,7 @@
             opacity: 0.35;
             letter-spacing: 0.04em;
             font-weight: 500;
+            font-style: italic;
         }
 
         .hidden { display: none !important; }
@@ -253,11 +246,11 @@
                 <h2 class="card-title">Notas de Amor ✨</h2>
                 <div class="grid-buttons">
                     <div class="copy-item" onclick="copyText('Lo haces bien, mi rabanito ❤️', this)">
-                        <span class="item-tag">Motivación</span>
+                        <span class="item-tag"><span>Motivación</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
                         <span class="item-preview">Lo haces bien, mi rabanito ❤️</span>
                     </div>
                     <div class="copy-item" onclick="copyText('Eres la administradora más increíble del mundo 🌸', this)">
-                        <span class="item-tag">Dedicatoria</span>
+                        <span class="item-tag"><span>Dedicatoria</span><span class="copy-indicator" style="opacity:0.4; font-weight:400;">Copiar</span></span>
                         <span class="item-preview">Eres la administradora más increíble del mundo 🌸</span>
                     </div>
                 </div>
@@ -270,6 +263,7 @@
     </footer>
 
     <script>
+        // TU ENLACE ACTUALIZADO Y CONFIGURADO
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyN3NEfifSg76pTn9-b5K0uVeHpL2hE5W3XAHoxr6TXFdI0YOpFQh24auOK89B6o3BRg/exec";
 
         let masterData = [];
@@ -320,18 +314,35 @@
             });
         }
 
+        // 🚀 ALGORITMO FANTASMA ULTRA RÁPIDO Y 100% AUTOMÁTICO (TRUE UX/UI)
         function copyText(text, element) {
-            navigator.clipboard.writeText(text).then(() => {
-                triggerSuccess(element);
-            }).catch(() => {
-                const textArea = document.createElement("textarea");
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text)
+                    .then(() => { triggerSuccess(element); })
+                    .catch(() => { fallbackStealthCopy(text, element); });
+            } else {
+                fallbackStealthCopy(text, element);
+            }
+        }
+
+        // COPIADO DE RESPALDO ULTRA OCULTO (NUNCA CREA CUADROS ABAJO)
+        function fallbackStealthCopy(text, element) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-99999px";
+            textArea.style.top = "-99999px";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
                 document.execCommand('copy');
                 triggerSuccess(element);
-                document.body.removeChild(textArea);
-            });
+            } catch (err) {
+                console.error("Error al copiar", err);
+            }
+            document.body.removeChild(textArea);
         }
 
         function triggerSuccess(element) {
@@ -340,14 +351,14 @@
             const originalTag = tagSpan.innerText;
             
             element.classList.add('success');
-            tagSpan.innerText = '✨ ¡COPIADO CON ÉXITO!';
-            if(indicator) indicator.style.display = 'none';
+            tagSpan.innerText = "✨ ¡COPIADO!";
+            if(indicator) indicator.style.opacity = "0";
 
             setTimeout(() => {
                 element.classList.remove('success');
                 tagSpan.innerText = originalTag;
-                if(indicator) indicator.style.display = 'inline';
-            }, 1000);
+                if(indicator) indicator.style.opacity = "0.4";
+            }, 900);
         }
 
         function showErrorUI() {
