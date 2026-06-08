@@ -206,9 +206,19 @@
         #char-counter { font-size: 0.65rem; color: var(--accent-pink); font-weight: 400; }
 
         .scratchpad-textarea {
-            width: 100%; height: 110px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-tile);
-            padding: 12px; font-family: var(--font-display); font-size: 0.85rem; color: var(--scratch-text); 
-            resize: none; box-sizing: border-box; background-color: var(--scratch-input); line-height: 1.5; transition: var(--transition-smooth);
+            width: 100%; 
+            min-height: 150px; /* Altura base un poco más cómoda */
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: var(--radius-tile);
+            padding: 12px; 
+            font-family: var(--font-display); 
+            font-size: 0.85rem; 
+            color: var(--scratch-text); 
+            resize: vertical; /* 🔥 MAGIA: Permite que ella lo estire solo hacia abajo */
+            box-sizing: border-box; 
+            background-color: var(--scratch-input); 
+            line-height: 1.5; 
+            transition: border-color 0.25s ease; /* Quitamos transition en height para que el arrastre sea fluido */
         }
         .scratchpad-textarea:focus { outline: none; border-color: var(--accent-pink); }
 
